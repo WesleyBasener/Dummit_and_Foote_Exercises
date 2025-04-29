@@ -1,0 +1,98 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+	
+	\title{Exercises from Chapter 8}
+	\author{Wesley Basener}
+	\maketitle
+	
+	\begin{problem}{1.3}
+		Let $R$ be a Euclidean Domain. Let $\mathit{m}$ be the minimum integer in the set of norms of nonzero elements of $R$. Prove that every nonzero element of $R$ of norm $\mathit{m}$ is a unit. Deduce that a nonzero element of norm zero (if such an element exists) is a unit.
+		\begin{proof}
+			Let $x$ be the element of R with norm $\mathit{m}$. By definition of a Euclidean Domain, there must be some elements $q, r$ in $R$ such that $1 = qx + r$, where $N(r)<N(x)$ or $r=0$ and $1$ is unity. Since $x$ has minimal norm, $r=0$. Hence, $1=qx$ and x is a unit. Since the minimal possible norm is always $0$, any nonzero element of norm $0$ will hence be a unit.
+			\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.4}
+		Let R be a Euclidean Domain.\\
+		\\
+		(a) Prove that if $(a,b)=1$ and $a$ divides $bc$, then $a$ divides $c$. More generally, prove that if $a$ divides $bc$ with nonzero $a,b$ then $\frac{a}{(a,b)}$ divides $c$.\\
+		\\
+		(b) Consider the Diophantine equation $ax+by=N$ where $a,b$ and $N$ are integers and $a,b$ are nonzero. Suppose $x_{0}, y_{0}$ is a solution: $ax_{0}+by_{0}=N$. Prove that the full set of solutions to this equation is given by
+		$x=x_{0} + m \frac{b}{(a,b)}$, $y=y_{0} - m \frac{a}{(a,b)}$
+		as $m$ ranges over the integers. [If $x,y$ is a solution to $ax+by=N$, show that $a(x-x_{0}) = b(y_{0} - y)$ and use (a).]
+	
+	
+		\begin{proof}
+			For part a, we have that $xa = bc$ for some $x$ in $R$. The existence of a division algorithm means we must have $a = qc + r$. We wish to show that $r$ is $0$. Substituting out $qc+r$ for $a$ in the above, we have $qc + r = bc$. Which can be rewritten as $c(-q-b) = r$. $r$ cannot divide $c$ unless it is zero. Therefore, $r=0$ and $a$ divides $b$. For the general case, let $a'= \frac{a}{(a,b)}$ and $b'= \frac{b}{(a,b)}$. Clearly, $(a,b)=1$ and $a'=b'c$. By the previous proof, $a'=\frac{a}{(a,b)}$ divides $c$.\\
+			\\
+			For part b, 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.1}
+		Prove that in a Principle Ideal Domain two ideals $(a)$ and $(b)$ are comaximal if and only if a greatest common divisor of $a$ and $b$ is $1$.
+		\begin{proof}
+			 Since we are in a PID, there must be some $e$ in $R$ such that $(e) = (a) + (b)$. Suppose $d$ be the gcd of $a$ and $b$. Any element of $(a) + (b)$ is also in $(d)$ meaning $d$ generates $(a) + (b)$. Since $d$ is the gcd of $a$ and $b$, it follows that $(d)$ is the smallest ideal containing $(a) + (b)$. $(d)$ cannot be larger than $(e)$ for this reason. $(d)$ also cannot be smaller than $(e)$, otherwise $(e)$ would contain elements outside of $(a) + (b)$. Therefore, $(d) = (e)$. It is now obvious that $(a) + (b) = R$ if and only if $(d) = 1$. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.2}
+		Prove than any two nonzero elements of a PID have a least common multiple.
+		\begin{proof}
+			For any $a$ and $b$ in R, having an lcm is equivalent to there being a single element $L$ generating the largest possible ideal contained in both $(a)$ and $(b)$. The intersection of $(a)$ and $(b)$ is the largest possible ideal contained in both $(a)$ and $(b)$. This intersection must have a single generator $(L)$. Therefore, $L$ is the lcm of $a$ and $b$. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.3}
+		Prove that the quotient of a PID by a prime ideal is again a PID.
+		\begin{proof}
+			Let $R$ be the PID and $P$ be a prime ideal in $R$. Let $I$ be an ideal in $R/P$ then $I' = \{r : r + P \in I\}$ is an ideal in $R$. $I'$ must have a single generator $i$, in $R$. Therefore, $I = (i) + P$ and $I$ is a principle ideal. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.4}
+		
+		Let $R$ be an integral domain. Prove that if the following two conditions hold, then $R$ is a PID.
+		(i) any two nonzero elements $a$ and $b$ of $R$ have a greatest common divisor which can be written in the form $ra+sb$ for some $r,s \in R$, and (ii) if $a_{1}, a_{2}, a_{3}, ...$ are nonzero elements of $R$ such that $a_{i+2}|a_{i}$ for all $i$, then there is a positive integer $N$ such that $a_{n}$ is a unit for all $n \geq N$.
+		\begin{proof}
+			Let $I$ be any ideal in $R$. Let $a_{1}$ be any element of $I$. If $a_{1}$ generates $I$, then $I$ is principle. Otherwise, there must be some $b_{1}$ in $I$, which does not divide $a_{1}$. Let $a_{2}$ be the gcd of $a_{1}$ and $b_{1}$. If $a_{2}$ generates $I$, then $I$ is, again, principle. Otherwise, we continue the process to find a sequence of elements $a_{1}, a_{2}, a_{3}, ... $. If this sequence terminates with a generator, $I$ is ideal. Otherwise, since we have $a_{i+2}|a_{i}$ for all $i$, there must be some $N$ such that $a_{n \geq N}$ are all units. This would mean that $(1)$ is a generator of $I$ and $I$ is principle. Therefore, must be $I$ principle.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.5}
+		Let $R$ be the quadratic integer ring $\mathbb{Z}[\sqrt[]{-5}]$. Define the ideals $I_{2}=(2,1+\sqrt[]{-5})$, $I_{3}=(3,2+\sqrt[]{-5})$, and $I_{3}'=(3,2-\sqrt[]{-5})$.
+		\begin{itemize}
+			\item[(a)] Prove that $I_{2}$, $I_{3}$ and $I_{3}'$ are nonprinciple ideals in R.
+			\item[(b)] Prove that the product of two nonprinciple ideals can be principle by showing that $I_{2}^{2} = (2)$.
+			\item[(c)] Prove similarly that $I_{2}I_{3}=(1-\sqrt[]{-5})$ and $I_{2}I_{3}'=(1+\sqrt[]{-5})$ are principle. Conclude that the principle ideal $(6)$ is the product of four ideals $I_{2}^{2}I_{3}I_{3}'$.
+		\end{itemize}
+		
+		\begin{proof}
+			For (a), the ideals all have relatively prime generators. So, their single element generator would need to be $1$. But $1$ itself is not contained in any of the ideals. Therefore, none of them are principle.\\
+			For (b) The generators for $I_{1}^{2}$ are $4$, $2+2\sqrt[]{-5}$, and $4-2\sqrt[]{-5}$. These give the term $2(2+2\sqrt[]{-5}) + (4-4\sqrt[]{-5}) = 2$. So $2$ is in $I_{2}^{2}$. Since $2$ can generate all the generators, $(2)=I_{2}^{2}$.\\
+			For c, ...
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.6}
+		Let $R$ be an integral domain and suppose that every prime ideal in R is principle. This exercise proves that every ideal of $R$ is principle i.e. $R$ is a PID.
+		\begin{itemize}
+			\item[(a)] Assume that the set of ideals of $R$ that are not principle is nonempty and prove that this set has a maximal element under inclusion (which by hypothesis is not prime). [Use Zorn's Lemma.]
+			\item[(b)] Let $I$ be an ideal which is maximal with respect to being nonprinciple, and let $a,b \in R$ with $ab \in R$ but $a \notin I$ and $b \notin I$. Let $I_{a} = (I, a)$ be the ideal generated by $I$ and $a$, let $I_{b}=(I, b)$ be the ideal generated by $I$ and $b$, and define $J=\{ r \in R | r I_{a} \subseteq I\}$
+		\end{itemize}
+		
+	\end{problem}
+		
+		
+		
+\end{document}
