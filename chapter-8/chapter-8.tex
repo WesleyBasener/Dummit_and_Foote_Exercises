@@ -3,6 +3,21 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
 
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 
@@ -117,14 +132,80 @@
 			
 			\begin{proof}
 				For part a, $R$ is Bezout if and only if for any $a$ and $b$ in $R$, there exists a $d$ in $R$ such that $(a,b)=(d)$. This implies that $d$ divides both $a$ and $b$. If there is another element $c$ of $R$, which divides $a$ and $b$, then $(c)$ is a subset of $(a,b)$ and is hence a subset of $(d)$ meaning $cx=d$ for some $x$ in $R$. So $d$ is the gcd of $a$ and $b$. Since $(d)=(a,b)$, it is obvious that there is some $x$ and $y$ in $R$ such that $ax+by=d$.\\
-				\\
+				
 				For part b, let $I$ be finitely generated. Then $I = (a_{1}, a_{2}, ... ,a_{n})$. We can rewrite this as $(a_{1}, a_{2}) \cup (a_{3}, ... , a_{n}) = (a_{1,2}) \cup (a_{3}, ... , a_{n}) = (a_{1,2}, a_{3}, ... , a_{n})$. By induction, we can continue rewriting the ideal until we have $I=(a_{1,2,...,n})$\\
-				\\
+				
 				For part c, let $a$ and $b$ be in $R$. From part a, we know $a$ and $b$ have a gcd, $d$. Now, let $a = a'd$ and $b=b'd$. Then, $a/b$ can be written as $a'/b'$. If $d$ is one, then $a$ and $b$ are relatively prime, and there is no need to factor the fraction.
 			\end{proof}
 		\end{problem}
 		
+		\begin{problem}{2.8}
+			Prove that if $R$ is a PID and $D$ is a multiplicatively closed subset of $R$, then $D^{-1}R$ is a also a PID.
+			\begin{proof}
+				Let $I$ be an ideal in $D^{-1}R$. Then any element of $I$ will have the form $r/d$ for $r$ in $R$ and $d$ in $D$. Since $d$ is also in $R$, $rd/d=r$ is also in $I$. Hence, $I$ is some ideal in $R$ multiplied by $D^{-1}$ and is thus principle.
+			\end{proof}
+		\end{problem}
+		
+		\begin{customthm}{14}
+			Every PID is a UFD. In particular, every Euclidean Domain is a UFD.
+			\begin{proof}
+				(I basically copied this proof from DF. I wanted to reword what they wrote because it was a bit confusing the first time through.)
+				
+				Since every ED is a PID, we only need to prove the first case. Let $R$ be a PID and $r$ be a nonzero element of $R$, which is not a unit. We wish to show that $r$ is a unique product of elements. If $r$ is irreducible, we are done. Otherwise, $r$ is the product of some $r_1 r_2$. If either factor were a unit, we could divide it out. So we can assume WLG that neither are units. If $r_1$ is irreducible, we leave it, otherwise we again reduce it to $r_11 r_22$. We can continue reducing $r$ until all factors are irreducible. But we now need to show that this process terminates. 
+				
+				Suppose it does not, then, with some relabeling of terms, and the axiom of choice, we would have $r = r_1 x_1 ...$, $r_1 = r_2 x_2$, $r_2 = r_3 x_3$, ... on and on, where $r_i$ and $x_i$ are not units for any $i$. We now have the following chain of ideals, $(r) \subset (r_1) \subset (r_2) \subset ... \subset R$. Where all subsets are proper since $r_i$ and $x_i$ are not units. Consider the union of all ideals in this chain, $I = \cup_{i=1}^{\infty} (r_i)$. As we are in a PID, $I$ must have a single element generator $\alpha$. But $\alpha$ is in $I$, meaning it must be in at least one of the $(r_i)$. Therefore, for some $N$, $(r_N) = (\alpha) = I$ and for every $n>N$, $r_n = r_N$ contradicting the earlier statement about proper inclusions. Thus, the factorization must terminate.
+				
+				Now, it remains to show that the factorization is unique. Suppose we have two prime factorizations of $r$.
+				\begin{align*}
+					r = q_1 q_2 ... q_n = p_1 p_2 ... p_m
+				\end{align*}
+				Then $q_1$ divides the product on the right. By proposition 11, $q_1$
+				
+			\end{proof}
+		\end{customthm}
 	
+		
+		\begin{problem}{3.1}
+			Let $G=\mathbb{Q}^{x}$ be the multaplicative group of rational numbers. If $a=p/q$ with $p$ and $q$ relatively prime, let $\phi:G \rightarrow G$ be the function that replaces $2$ and $3$ in the factorization of $a$.
+			\begin{itemize}
+				\item[(a)] Prove that $\phi$ is a isomorphism.
+				\item[(b)] Prove that there are infinitely many isomorphisms of the group $G$ to itself.
+				\item[(c)] Prove that none of the isomorphisms above can be extended to an isomorphism from the ring $\mathbb{Q}$ to itself. In fact, prove that the identity map is the only isomorphism from $\mathbb{Q}$ to itself.
+			\end{itemize} 
+			\begin{proof}
+				For part a, let $a$ and $b$ any elements of $G$. $a$ and $b$ can be written $a=2^{n}3^{m}p/q$ and $b=2^{i}3^{j}l/k$ where $p,q,l,$ and $k$ are not divisible by $2$ or $3$ and $m,n,l,$ and $k$ are integers.
+				\begin{align}
+					 \phi(a)\phi(b) = \phi(2^{n}3^{m}p/q) \cdot \phi(2^{i}3^{j}l/k) = 3^{n}2^{m}p/q \cdot 3^{i}2^{j}l/k = 3^{n+i}2^{m+k} \frac{pl}{qk} = \phi(2^{n+i}3^{m+k} \frac{pl}{qk}) = \phi(ab)
+				\end{align}
+				
+				For part b, instead of swapping $2$ and $3$, we can create a $\phi_{2}^{p}$ that swaps $2$ and any other prime $p$. Since there are an infinite number of primes, there will be an infinite number of isomorphisms.
+				
+				For part c, let $\phi_{q}^{p}$ be a function that swaps two primes in the factorization of elements on the ring. If either $q$ or $p$ is $1$, the $\phi_{q}^{p}$ is not a ring isomorphism. Otherwise, we have
+				\begin{align}
+					\phi(q) - \phi(1) = p - 1 \not = q-1 = \phi(q-1)
+				\end{align}
+				$\phi$ is not closed on addition, so it cannot be a ring isomorphism. 
+				
+				For any non identity function $\phi : \mathbb{Q} \rightarrow \mathbb{Q}$, if $\phi$ ...
+			\end{proof}
+		\end{problem}
+		
+		\begin{problem}{3.2}
+			Let $a$ and $b$ be nonzero elements of the UFD $R$. Prove that $a$ and $b$ have least common multiple and describe it in terms of their prime factors.
+			\begin{proof}
+				We can write $a$ and $b$ as $a=up_{1}^{n_1}p_{2}^{n_2}...$ and $b=vp_{1}^{m_1}p_{2}^{m_2}...$, where $\text{gcd}(u,v)=1$. Consider $e=uvp_{1}^{\text{max}(n_1, m_1)}p_{2}^{\text{max}(n_2, m_2)}...$. $avq_{1}q_{2}... = e$ where $q_i = p_i^{\text{max}(m_i-n_i, 0)}$. So, $a$ divides $e$. It can be similarly shown that $b$ divides $e$. Consider some $e' \not = e$  which is also divisible by $a$ and $b$. We need to show that $e'$ is divisible by $e$. Suppose $e'$ has less factors than $e$. Then, there are three cases. $e'$ is not divisible by $u$, in which case it is not divisible by $a$, $e'$ is not divisible by $v$ in which case it is not divisible by $b$, or $e'$ is not divisible by some $p_i^{\text{max}(m_i, n_i)}$ in which case it is not divisible by at lest one of $a$ or $b$. Thus, any such $e'$ must have more factors than $e$ and is divisible by $e$. Therefore, $e$ is the lcm of $a$ and $b$.
+			\end{proof}
+		\end{problem}
+		
+		\begin{problem}{3.3}
+			Determine all the representations of the integer $2130797 = 17^{2} \cdot 73 \cdot 101$ as the sum of two squares.
+			\begin{proof}
+				pass
+			\end{proof}
+		
+		\end{problem}
+		
+		
 		
 		
 		

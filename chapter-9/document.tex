@@ -1,0 +1,70 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+	
+	\title{Exercises from Chapter 9}
+	\author{Wesley Basener}
+	\maketitle
+	
+	\begin{problem}{1.1}
+		Let $p(x,y,z)=2x^2 y - 3xy^3 z + 4y^2 z^5$ and $q(x,y,z) = 7x^2 + 5x^2 y^3 z^4 - 3x^2 z^3$ be polynomials in $\mathbb{Z}[x,y,z]$.
+		\begin{itemize}
+			\item[\textbf{(a)}] Write each $p$ and $q$ as a polynomial in $x$ with coefficients in $\mathbb{Z}[y,z]$.
+			\item[\textbf{(b)}] Find the degree of each of $p$ and $q$.
+			\item[\textbf{(c)}] Find the degree of $p$ and $q$ in each of the three variables $x,y,$ and $z$.
+			\item[\textbf{(d)}] Compute $pq$ and find the degree of $pq$ in each of the three variables $x,y,$ and $z$.
+			\item[\textbf{(e)}] Write $pq$ as a polynomial in the variable $z$ with coefficients in $\mathbb{Z}[x,y]$
+		\end{itemize}
+		
+		\begin{proof}
+			For part a, $p = (2y)x^2 - (3y^3 z)x + (4y^2 z^5)x^0$ and $q=(7+5y^3 z^4 - 3z^3)x^2$. For part b, the degree of $p$ is the degree of the last term $2+5=7$ and the degree of $q$ is the degree of the center second term $2+3+4=9$. For part c, $x,y,z$ degrees of $p$ are $2,3,$and $5$ respectively and for $q$ they are $2,3,$ and $4$ respectively. For part d, 
+			\begin{align*}
+				pq=(2x^2 y - 3xy^3 z + 4y^2 z^5) (7x^2 + 5x^2 y^3 z^4 - 3x^2 z^3)
+			\end{align*}
+			\begin{align*}
+				= 14 x^4 y - 21 x^3 y^3 z - 6 x^4 y z^3 + 9 x^3 y^3 z^4 + 10 x^4 y^4 z^4 + 28 x^2 y^2 z^5 - 15 x^3 y^6 z^5 - 12 x^2 y^2 z^8 + 20 x^2 y^5 z^9
+			\end{align*}
+			The degrees of $x,y,$ and $z$ are $4,6,$ and $9$ respectively. Lastly, for part e, we have
+			\begin{align*}
+				(20 x^2 y^5) z^9 - (12 x^2 y^2) z^8 + (28 x^2 y^2 - 15 x^3 y^6) z^5 + (9 x^3 y^3 + 10 x^4 y^4 )z^4 - (6 x^4 y)z^3 - (21 x^3 y^3) z + (14 x^4 y) z^0
+			\end{align*}
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.2}
+		Repeat the preceding exercise under the assumption that the coefficients are of $p$ and $q$ are in $\mathbb{Z}/3\mathbb{Z}$.
+		\begin{proof}
+			content...
+		\end{proof}
+	\end{problem}
+	
+	
+	
+	
+	
+	
+\end{document}

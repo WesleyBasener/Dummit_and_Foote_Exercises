@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+	
+	\title{Exercises from Chapter 7}
+	\author{Wesley Basener}
+	\maketitle
+	
+	\begin{problem}{1.1}
+		Show that $-1^{2}=1$ in $R$.
+		\begin{proof}
+			$-1 + (-1)^{2} = -1(1 + -1) = -1(0) = 0$
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.2}
+		Prove that if $u$ is a unit, then so is $-u$.
+		\begin{proof}
+			Let $w$ be the multiplicative inverse of $u$ and consider $-u \cdot w \cdot w$, by problem 1, when we multiply this by $-u$, we get $(-u)^{2} \cdot w^{2} = u \cdot w = 1$. Thus, $-u$ is a unit.
+		\end{proof}
+	\end{problem}	
+	
+	\begin{problem}{1.3}
+		Let $R$ be a ring with identity and $S$ be a subring of $R$ containing the identity. Prove that if $u$ is a unit in $S$, then it is a unit in $R$. Show by example that the converse is false. 
+		\begin{proof}
+			If $u$ is a unit in $S$, then there is some $v$ in $S$, such that $uv=1$. Since $S$ is a subset of $R$, $v$ is also in $R$. So, $u$ is a unit in $R$. For the second part, consider the ring of rational numbers $\mathbb{Q}$, which has the integers $\mathbb{Z}$ as a subring. Although $2$ is a unit in $\mathbb{Q}$, with inverse $1/2$, it is not a unit in $\mathbb{Z}$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}
+		Prove that the intersection of any nonempty set of subrings is also a subring.
+		\begin{proof}
+			Let $S_1, S_2, ...$ be a set of subrings in $R$ and let $S= S_1 \cap S_2 \cap ...$ be the intersection of all the subrings. Let $a,b,c$ be elements of $S$. Since $a$ and $b$ are in all $S_i$ in our set, $a \cdot b$ and $a+b$ will also be in every $S_i$ in our set, and will hence be in $S$. Thus, $S$ is closed on both binary operators. Now, since each $S_i$ is an additive group, the additive inverse of $a$ will be in each $S_i$.
+		\end{proof}
+	\end{problem}
+	
+\end{document}
