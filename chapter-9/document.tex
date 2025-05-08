@@ -58,13 +58,124 @@
 	\begin{problem}{1.2}
 		Repeat the preceding exercise under the assumption that the coefficients are of $p$ and $q$ are in $\mathbb{Z}/3\mathbb{Z}$.
 		\begin{proof}
-			content...
+			We can start by rewriting $p$ and $q$'s coefficients in $\mathbb{Z}/3\mathbb{Z}$.
+			\begin{align*}
+				p = 2x^2 y + y^2 z^5 \text{ and } q = x^2 + 2x^2 y^3 z^4
+			\end{align*}
+			For part a, we have $p=(2y)x^2 + (y^2 z^5)x^0$ and $q=(1 + 3y^3 z^4)x^2$. For part b, the degree of $p$ is $7$ and the degree of $q$ is $9$. For part c, the degree of $p$ in $x,y$, and $z$ is $2,2,$ and $5$ respectively and for $q$ it is $2,3,$ and $4$ respectively. For part d,
+			\begin{align*}
+				pq = 2x^4 y + x^4 y^4 z^4 + x^2 y^2 z^5 + 2x^2 y^5 z^9
+			\end{align*}
+			The degrees of $pq$ in $x,y,$ and $z$ are $4,6,$ and $9$ respectively. Finally, for part e,
+			\begin{align*}
+				pq = (2x^2 y^5)z^9 + (x^2 y^2) z^5 + (x^4 y^4)z^4 + (2x^4 y)z^0 
+			\end{align*}
 		\end{proof}
 	\end{problem}
 	
+	\begin{problem}{1.3}
+		If $R$ is a commutative ring and and $x_1, x_2, ... , x_n$ are independent variables over $R$, prove that $R[x_{\pi(1)}, x_{\pi(2)}, ... , x_{\pi(n)}]$ is isomorphic to $R[x_{1}, x_{2}, ... , x_{n}]$ for any permutation of $\{1,2,...,n\}$.
+		\begin{proof}
+			Any element of $R[x_{1}, x_{2}, ... , x_{n}]$ will have the form
+			\begin{align*}
+				\alpha = (\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} \alpha_{i_1, i_2, ... , i_n}x_1^{i_1}x_2^{i_2}...x_n^{i_n})...))
+			\end{align*}
+			Let $\alpha$ and $\beta$ be two such polynomials and let $\phi:R[x_{1}, x_{2}, ... , x_{n}] \rightarrow R[x_{\pi(1)}, x_{\pi(2)}, ... , x_{\pi(n)}]$ be the variable permutation function.
+			Then, for addition,
+			\begin{align*}
+				\phi(\alpha) + \phi(\beta) = \\		
+			\end{align*}
+			\begin{align*}		
+				\phi((\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} \alpha_{i_1, i_2, ... , i_n}x_1^{i_1}x_2^{i_2}...x_n^{i_n})...))) +
+				\phi((\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} \beta{i_1, i_2, ... , i_n}x_1^{i_1}x_2^{i_2}...x_n^{i_n})...))=\\		
+			\end{align*}
+			\begin{align*}	
+				\phi((\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} \alpha_{i_1, i_2, ... , i_n}x_{\pi(1)}^{i_1}x_{\pi(2)}^{i_2}...x_{\pi(n)}^{i_n})...))) +
+				\phi((\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} \beta{i_1, i_2, ... , i_n}x_{\pi(1)}^{i_1}x_{\pi(2)}^{i_2}...x_{\pi(n)}^{i_n})...))) =\\		
+			\end{align*}
+			\begin{align*}
+				\phi((\Sigma_{i_1=0}^{m} (\Sigma_{i_2=0}^{m} ... (\Sigma_{i_n=0}^{m} (\alpha_{i_1, i_2, ... , i_n} + \beta{i_1, i_2,..., i_n})x_{\pi(1)}^{i_1}x_{\pi(2)}^{i_2}...x_{\pi(n)}^{i_n})...)))=\\		
+			\end{align*}
+			\begin{align*}
+				\phi(\alpha + \beta)
+			\end{align*}
+			Hence, the function satisfies the homomorphism condition on addition. 
+			
+			For multiplication, the coefficient of the term $x_1^{i_1}x_2^{i_2}...x_n^{i_n}$ in $\phi(\alpha \cdot \beta)$ will be the sum of all $\alpha_{k_1, k_2, ... , k_n} \cdot \beta_{j_1, j_2, ... , j_n}$ where $k_1 + j_1 = i_{\pi^{-1}(1)}, k_2 + j_2 = i_{\pi^{-1}(2)},..., k_n+j_n=i_{\pi^{-1}(n)}$ are all true. The coefficients of the $x_1^{i_1}x_2^{i_2}...x_n^{i_n}$ term in $\phi(\alpha) \cdot \phi(\beta)$ will be the sum of all  $\alpha_{k_1, k_2, ... , k_n} \cdot \beta_{j_1, j_2, ... , j_n}$ where $k_{\pi(1)} + j_{\pi(1)} = i_1, k_{\pi(2)} + j_{\pi(2)} = i_2,..., k_{\pi(n)} + j_{\pi(n)} =i_n$ are all true. But $k_{\pi(l)} + j_{\pi(l)} = i_l$ is true for all $l$ in $[n]$ if and only if $k_l + j_l = i_{\pi^{-1}(l)}$ is also true for all $l$ in $[n]$. So $\phi(\alpha \cdot \beta)$ and $\phi(\alpha) \cdot \phi(\beta)$ have precisely the same coefficients.
+			
+			Since the set of units in $R[x_{1}, x_{2}, ... , x_{n}]$ are the set of units in $R$, and $\phi$ is the identity element on $R$, $\phi(1_{R[x_{1}, x_{2}, ... , x_{n}]}) = 1_{R[x_{1}, x_{2}, ... , x_{n}]}$.
+			
+			These three cases prove that $\phi$ is a homomorphism on $R[x_{1}, x_{2}, ... , x_{n}]$. To show that it is an isomorphism, notice first that for $r$ in $R$, $\phi(rx_{1}^{i_1}x_{2}^{i_2}...x_{n}^{i_n})=rx_{\pi(1)}^{i_1}x_{\pi(2)}^{i_2}...x_{\pi(n)}^{i_n}$ is nonzero if and only if $r$ is nonzero. Second, recall that $\phi$ is the identity function on $R$. Hence, the inverse of the kernal of $\phi$ is the $0$ element of $R$. Therefore, $\phi$ is an isomorphism.
+		\end{proof}
+	\end{problem}
 	
+	\begin{problem}{1.4}
+		Prove that the ideals $(x)$ and $(x,y)$ are prime ideals in $\mathbb{Q}[x,y]$ but only the later ideal is maximal.
+		\begin{proof}
+			If the second ideal were not prime, then there would exist $a,b$ in $R$ such that $ab=cx^ny^m$ for nonzero $c$ in $R$. But this would violate the closure of $R$ under multiplication, because $cx^ny^m$ is not in $R$. Thus, $(x,y)$ is prime. The same result follows for the first ideal $(x)$ by letting $a,b,$ and $c$ be in $R[y]$.
+			
+			Since $(x) \subset (x,y)$, $(x)$ is not maximal. For any $\alpha = \Sigma^{n, m}_{i=0, j=0} \alpha_{i,j}x^iy^j$, $\alpha$ is not in $(x,y)$ if and only if $\alpha_{0,0} \not = 0$. For every such $\alpha$, $(x,y) + (\alpha) = (\alpha_{0,0}) = (1) = \mathbb{Q}[x,y]$. So the only ideal containing $(x,y)$ is $\mathbb{Q}[x,y]$. Hence, $(x,y)$ is maximal.
+			
+		\end{proof}	
+	\end{problem} 
 	
+	\begin{problem}{1.5}
+		Prove that $(x,y)$ and $(2,x,y)$ are prime ideals in $\mathbb{Z}[x,y]$ but only the latter ideal is a maximal ideal.
+		\begin{proof}
+			There are no elements not equal to $x$, $y,$ or $2$ in $\mathbb{Z}[x,y]$ that multiply to equal $x$, $y,$ or $2$ respectively. So the ideals generated by these elements are prime.
+			
+			Since $(x,y) \subset (2,x,y) \subset \mathbb{Z}[x,y]$, where all containment is proper, $(x,y)$ is not maximal. For any polynomial $\alpha = \Sigma_{i=0,j=0}^{m,n} \alpha_{i,j}x^iy^j$ is not in $(2,x,y)$ if and only if $\alpha_{0,0}$ is not zero and is not divisible by $2$. This means that there are $a,b$ in $\mathbb{Z}$ such that $a\alpha_{0,0} + b2 = 1$. Hence, $(2,x,y) + (\alpha) = \mathbb{Z}[x,y]$. So there are no ideals containing $(2,x,y)$ aside from $\mathbb{Z}[x,y]$. Therefore, $(2,x,y)$ is a maximal ideal.
+		\end{proof}
+	\end{problem}
+
+	\begin{problem}{1.6}	
+		Prove that $(x,y)$ is not principle in $\mathbb{Q}[x,y]$.
+		\begin{proof}
+			The gcd of $x$ and $y$ is $1$. So, the only element that could generate $(x,y)$ is $1$, which would also generate the rest of $\mathbb{Q}[x,y]$.
+		\end{proof}
+	\end{problem}
 	
+	\begin{problem}{1.7}
+		Let $R$ be a commutative ring with $1$. Prove that a polynomial ring in more than one variable over $R$ is not a PID.
+		\begin{proof}
+			For any $R[x,y]$, the ideal $(x,y)$ is not principle. By induction, this is true for any polynomial ring with more than one variable.
+		\end{proof}
+	\end{problem}
+
+	\begin{problem}{1.8}
+		Let $F$ be a field and $R = F[x, x^2y, x^3y^2, ... , x^ny^{n-1},...]$ be a subring of the polynomial ring $F[x,y]$.
+		\begin{itemize}
+			\item[\textbf{(a)}] Prove that the fields of fractions of $R$ and $F[x,y]$ are the same.
+			\item[\textbf{(b)}] Prove that $R$ contains an ideal that is not finitely generated.
+		\end{itemize} 
+		\begin{proof}
+			For any $f$ in the field $F$, $fx \cdot 1/x = f$ is in the fraction field of $R$ and so are $x^2y \cdot 1/x^2 = y$ and $x$. Therfore, the fraction field is $(F, x, y) = F[x,y]$.
+			
+			For part b, consider the ideal of elements $fx^my^n$, where $m > n+1$. Suppose $x^{m+2}y^m$, which is indeed part of the ideal, is not a generator of the ideal. Then this element must be divisible by an element of the ideal. This is impossible because there is no partition $a_1,b_1$ and $a_2,b2$ of the integers $m+2, m$ such that $a_1>b_1+1$ and $a_2>b_2$. Therefore, the ideal is not finitely generated.
+		\end{proof}
+	\end{problem}
 	
+	\begin{problem}{1.9}
+		Prove that a polynomial ring in infinitely many variables with coefficients in any commutative ring contains ideals that are not finitely generated.
+		\begin{proof}
+			In $R[x_1, x_2, ...]$, the ideal of all elements containing variables is not finitely generated, every variable $x_i$ by itself is in the ideal, but is not divisible by other variables.
+		\end{proof}
+	\end{problem}
 	
+	\begin{problem}{1.10} 
+		Prove that the ring $\mathbb{Z}[x_1,x_2,x_3,...]/(x_1x_2,x_3x_4,x_5x_6,...)$ contains infinitely many minimal prime ideals. 
+		
+		\begin{proof}
+			Consider the ideal $(x_{\beta_1}, x_{\beta_2}, ...)$, where $\beta_1$ is either $1$ or $2$, $\beta_2$ is either $3$ or $4$ and so on. This is a prime ideal, since each of its generators are prime. It contains the $0$ ideal of the quotient $(x_1x_2,x_3x_4,x_5x_6,...)$. And, removing any of its generators would keep it from containing the $0$ ideal, so it is minimal. Since there are infinite possibilities of the combinations of $\beta$s, there are infinite such minimal ideals in the ring.
+		\end{proof}
+	
+	\end{problem}
+	
+	\begin{problem}{1.11}
+		Show that the radical of the ideal $I=(x,y^2)$ in $\mathbb{Q}[x,y]$ is $(x,y)$. Deduce that $I$ is a primary ideal that is not a power of a prime ideal.
+		
+		\begin{proof}
+			
+		\end{proof}
+	\end{problem}
 \end{document}
