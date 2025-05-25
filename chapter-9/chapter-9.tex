@@ -462,12 +462,179 @@
 	\end{problem}
 	
 	\begin{problem}{3.5}
-		Let $R=\mathbb{Z} + x\mathbb{Q}[x] \subset \mathbb{Q}[x]$ be the ring considered in the previous exercise.
+		Let $R=\mathbb{Z} + x\mathbb{Q}[x] \subset \mathbb{Q}[x]$ be the ring considered in the previous exercise. (that is, the set of polynomials in $x$ with rational coefficients whose constant term is an integer.)
 		\begin{itemize}
-			\item[\textbf{(a)}]
-		\end{itemize} 
+			\item[\textbf{(a)}] 
+				Suppose that $f(x),g(x) \in \mathbb{Q}[x]$ are two nonzero polynomials with rational coefficients and that $x^r$ is the largest power of $x$ dividing both $f(x)$ and $g(x)$ in $\mathbb{Q}[x]$, (i.e. $r$ is the degree of the lowest order term appearing in either $f(x)$ or $g(x)$). Let $f_r$ and $g_r$ be the coefficients of $x^r$ in $f(x)$ and $g(x)$ respectively (one of wich is nonzero by definition of $r$). Then $\mathbb{Z}f_r + \mathbb{Z}g_r = \mathbb{Z}d_r$ for some nonzero $d_r \in \mathbb{Q}$Prove that there is a polynomial $d(x) \in \mathbb{Q}[x]$ that is a gcd of $f(x)$ and $g(x)$ in $\mathbb{Q}[x]$ and whose term of minimal degree is $d_r x^r$.
+			\item[\textbf{(b)}]
+				Prove that $f(x)=d(x)q_1(x)$ and $g(x) = d(x)q_2(x)$ where $q_1(x)$ and $q_2(x)$ are elements of the subring $R$ of $\mathbb{Q}[x]$.
+		\end{itemize}
+		\begin{proof}{\textbf{(a)}}
+			Let $d(x)$ be a gcd of $f(x)$ and $g(x)$ in $\mathbb{Q}[x]$. We have that $f(x) + g(x) = d(x)a(x)$ for some $a(x)$ in $\mathbb{Q}[x]$. Since $x^r$ divides both $f(x)$ and $g(x)$, it must also divide their gcd $d(x)$. Since $x^{r+1}$ does not divide the left side of the equation, and $x^r$ does divide $d(x)$, $x$ does not divide $a(x)$. Therefore, $a(x)$ has a nonzero constant term $a_r$ and the minimal degree term in $d(x)$ is $d_rx^r$.
+			
+			The minimal degree term on both sides is $x^r$, so we can divide out by $x^r$ rendering $\frac{f(x)}{x^r} + \frac{g(x)}{x^r} = a(x) \cdot \frac{d(x)}{x^r}$. The constant terms in the equation will be $f_r + g_r = a_rd_r$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.1}
+		Determine whether the following polynomials are irreducible in the rings indicated. For
+		those that are reducible, determine their factorization into irreducibles. The notation $\mathbb{F}_p$
+		denotes the finite field $\mathbb{Z}/p\mathbb{Z}$, $p$ a prime.
+		\begin{itemize}
+			\item[\textbf{(a)}] $x^2 + x + 1$ in $\mathbb{F}_2[x]$.
+			\item[\textbf{(b)}] $x^3 + x + 1$ in $\mathbb{F}_3[x]$.
+			\item[\textbf{(c)}] $x^4 + 1$ in $\mathbb{F}_5[x]$.
+			\item[\textbf{(d)}] $x^4 + 10x^2 + 1$ in $\mathbb{Z}[x]$.
+		\end{itemize}
+		\begin{proof}{\textbf{(a)}}
+			The field $\mathbb{F}_2$ contains only the elements $0$ and $1$. Plugging these values into the first polynomial we see $0^2 + 0 + 1 = 1$ and $1^2 + 1 + 1 = 3$, so neither element is a root. By proposition 9 and 10, the polynomial is not reducible.
+		\end{proof}
+		\begin{proof}[\textbf{(b)}]
+			The field $\mathbb{F}_3$ consists of the integers $0$, $1$, and $2$. Plugging $1$ in to the equation $1^3 + 1 + 1 = 0$, we see it is a root. So the polynomial $x-1$ is a factor. In $\mathbb{F}_3$, $x-1$ is $x+2$. By proposition 9 and 10, there must be a polynomial $p(x)$ such that $(x+2)p(x) = x^3 + x + 1$. By polynomial long division, which I am too lazy to write up here in latex, we have $p(x) = x^2 + x + 2$ Hence, $x^3 + x + 1 = (x+2)(x^2 + x + 2)$
+		\end{proof}
+		\begin{proof}[\textbf{(c)}]
+			The field $\mathbb{F}_5[x]$ holds the set of integers $0$ ,$1$, $2$, $3$, and $4$. Plugging each of these into the polynomial yields $1$, $2$, $17$, $82$, and $257$ none of which are conguent to $0$ mod$(5)$. So, the polynomial has no factors of degree 1. But, since the polynomial is of degree $4$, proposition 10 does not apply.
+			
+			To factor the polynomial, note that $1 \cong -4 mod(5)$. So, the polynomial can be rewritten as $x^4 - 4 = (x^2)^2 - 2^2 = (x^2 + 2)(x^2 - 2) = (x^2 + 2)(x^2 + 3)$. As discussed earlier, the polynomial has no degree one roots. So, it is fully reduced.
+		\end{proof}
+		\begin{proof}[\textbf{(d)}]
+			By proposition 11, if the polynomial has a root, it must be a rational number whose numerator divides 1 and denominator also divides 1. That is to say, the root must be 1, if it exists. Plugging 1 in however yields $1^4 + 10\cdot 1^2 + 1 = 12$. So, the polynomial has no degree one roots.
+			
+			Both factors must then be degree 2. The form of the polynomial suggests that if it does factor, it has the form $(ax^2 + b)(cx^2 + d)$ where $ac=1$, $bd=1$, and $ad+bc=10$. There are no units in the integers other than $1$ and $-1$. So, we must have $a=b=c=d=1$, $a=b=c=d=-1$, $a=c=-b=-d1$ or $-a=-c=b=d=1$. But for all options $ab+cd \not= 10$, so there is no such factorization.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.3}
+		Show that the polynomial $(x-1)(x-2)...(x-n) - 1$ is irreducible over $\mathbb{Z}$ for all $n \geq 1$.
 		\begin{proof}
+			Suppose the polynomial does factor into $p(x)q(x)$. Then if $x = 1,2,...n$, $p(x)q(x)=-1$ implying that $p(x)=1$ and $q(x)=-1$ or $p(x)=-1$ and $q(x)=1$ for each such $x$. 
+			
+			The polynomial $p(x) + q(x)$ has degree less than $n$. But, $x = 1,2,...n$ are all roots of this polynomial. Which is a contradiction. Therefore, there is no such factorization.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.5}
+		Find all monic irreducible polynomials of degree $\leq 3$ in $\mathbb{F}_2[x]$ and the same in $\mathbb{F}_3[x]$.
+		\begin{proof}
+			Such polynomials will have the form $ax^3 + bx^2 + cx + d$. with 16 and 27 total options for $\mathbb{F}_2[x]$ and $\mathbb{F}_3[x]$ respectively. We will ignore polynomials with a constant term of $0$, because they reduce to $xp(x)$. So our possible number goes down to 8 and 18. 
+			
+			By proposition 10, the irreducible polynomials are those without roots in their coefficient fields.
+			 
+			So, the irreducible polynomials in $\mathbb{F}_2$ are those with an odd number of coefficients ie. $1, x^2+x+1, x^3+x+1,$ and $x^3+x^2+1$. 
+			
+			We can use simple trial and error to find the polynomials in $\mathbb{F}_3[x]$. The irreducible polynomials where each coefficient is the same will are those polynomials whose number of terms do not divide $3$ ie. $x+1, 2x+2, x^2+1, 2x^2+2, x^3+1, 2x^3+2, x^3 + x^2 + x + 1$, and $2x^3+2x^2+2x+2$.
 			
 		\end{proof}
 	\end{problem}
+	
+	\begin{problem}{4.7}
+		Prove that $\mathbb{R}[x]/(x^2+1)$ is a field isomorphic to the complex numbers.
+		\begin{proof}
+			First, since $x^2+1 = (x+i)(x-i)$, it is not reducible in $\mathbb{R}$. Hence, $\mathbb{R}/(x^2+1)$ is a field.
+			
+			Next, notice that $x^2+1 \cong 0 \text{mod}(x^2+1)$ so $x^2 \cong -1 \text{mod}(x^2+1)$. So, any power of $x$ greater than one can be reduced with $x^{2n} \cong (-1)^{n}$ and $x^{2n+1} = (-1)^nx$. Thus, every polynomial in $\mathbb{R}/(x^2+1)$ will have the form $a+bx$.
+			
+			Define a function $\phi : \mathbb{R}[x]/(x^2+1) \rightarrow \mathbb{C}$ as $\phi(a+bx) = a+bi$. We want to show that this function is a ring homomorphism. Let $a+bx$ and $c+dx$ be two polynomials in our field. For addition,
+			\begin{align*}
+				\phi(a+bx) + \phi(c+dx) = a+bi+c+di = (a+c) + (b+d)i = \phi((a+c) + (b+d)i) = \phi(a+bx+c+dx)
+			\end{align*}
+			And, on multiplication we have 
+			\begin{align*}
+				\phi(a+bx) \cdot \phi(c+dx) = (a+bi) \cdot (c+di) = ac - bd + (ad + bc)i = \phi(ac - bd + (ad + bc)x) = \phi((a+bx)\cdot(c+dx))
+			\end{align*}
+			Therefore, $\phi$ is a homomorphism. The kernel of $\phi$ is clearly $0$, and so it is also an isomorphism. Thus, the two fields are isomorphic.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.9}
+		Prove that the polynomial $x^2 - \sqrt{2}$ is irreducible over $\mathbb{Z}[\sqrt{2}]$ (you may use the fact that
+		$\mathbb{Z}[\sqrt{2}]$ is a UFD --- cf. Exercise 9 of Section 8.1 ).
+		\begin{proof}
+			The prime ideal $(\sqrt{2})$ in $\mathbb{Z}[\sqrt{2}]$ contains $\sqrt{2}$. But $(\sqrt{2})^2=(2)$ does not contain $\sqrt{2}$. Hence, by Eisenstein's Criterion, the polynomial is irreducible.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.11}
+		Prove that $x^2+y^2-1$ is irreducible in $\mathbb{Q}[x,y]$.
+		\begin{proof}
+			Consider the prime ideal $(y^2-x)$. Taking the mod of the given polynomial over this ideal yields $x^2 + x - 1$ which is not reducible in $\mathbb{Q}[x,y]$. 
+			
+			The polynomials in $\mathbb{Q}[x,y]$ which become units in $\mathbb{Q}[x,y]/(y^2-x)$ are those whose constant term is in $(1)$ and whose non-constant terms are divisible by $(y^2-x)$. Such a term cannot factor out of $x^2+y^2-1$.
+			Therefore, by proposition 12, $x^2+y^2-1$ is irreducible in $\mathbb{Q}[x,y]$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.13}
+		Prove that $x^3+nx+2$ is is irreducible over $\mathbb{Z}$ for all integers $n \not = 1,-3,-5$.
+		\begin{proof}
+			By proposition 10, this polynomial factors over $\mathbb{Q}$ if and only if it has a root in $\mathbb{Q}$. Proposition 11 states that the rational roots of the polynomial must be $-1$, $-2$, $2$ or $1$.
+			
+			Setting $x=1,-1,2,-2$, we can solve for $n$, 
+			\begin{align*}
+				1^3 + n + 2 = 0, n = -3
+			\end{align*}
+			\begin{align*}
+				(-1)^3 - n + 2 = 0, n = 1
+			\end{align*}
+			\begin{align*}
+				2^3 + 2n + 2 = 0, n = -5
+			\end{align*}
+			\begin{align*}
+				(-2)^3 - 2n + 2 = 0, n = -3
+			\end{align*}
+			So the polynomial will only reduce in $\mathbb{Q}$ if $n$ is equal to $-3,1$ or $-5$. By extension, the polynomial will only reduce in $\mathbb{Z}$ if $n$ is equal to $-3,1$ or $-5$
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.15}
+		Prove that if $F$ is a field then the polynomial $X^n - x$ which has coefficients in the ring $F[[x]]$ of formal power series is irreducible over $F[[x]]$.
+		\begin{proof}
+			I am assuming that $X$ is the variable and $x$ is a constant. In other words, that the polynomial is in $F[[x]][X]$.
+			
+			The ideal $(x)$ is prime in $F[[x]]$. The polynomial $X^n - x$ is monic, with the constant term $x$ being in the prime ideal $(x)$, but not in the ideal $(x)^2$. Therefore, by Eisenstein's criterion, the polynomial is irreducible in $F[[x]]$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.17}
+		Prove the following variant of Eisenstein's Criterion: let $P$ be a prime ideal in the Unique Factorization Domain $R$ and let $f(x) = a_nx^n + a_{n-1}x^{n-1} + · · · + a_1x + a_0$ be a polynomial in $R[x]$, $n \geq 1$. Suppose $a_n \not \in P$, $a_{n-1},...,a_0 \in P$ and $a_o \not \in P^2$. Prove that $f(x)$ is irreducible in $F[x]$, where $F$ is the quotient field of R.
+		\begin{proof}
+			Suppose the polynomial is reducible in $R[x]$. Then, $a_nx^n + a_{n-1}x^{n-1} + · · · + a_1x + a_0 = a(x)b(x)$. Note that $a(x)$ and $b(x)$ have nonzero constant terms. Also note that $a(x)$ and $b(x)$ have non zero max degree terms $a_k'x^k$ and $b_mx^m$ where $k+m=n$, and $a_k', b_m \not \in P$. 
+			
+			Taking the modulus of both sides by $P$, we have $a_nx^n = \overline{a(x)}\overline{b(x)}$, using the convention that bars denote passage from $R$ to $R/P$. Since $a_0$ is in $P$ and not in $P^2$, then without loss of generality, $a(x)$ must have a constant term $a_0' \not \in P$. But then, $\overline{a(x)}\overline{b(x)}$ would have the term $a_0'b_mx^m$, a contradiction. Hence, $f(x)$ is not reducible in $R$. By Gauss' Lemma, it is also irreducible in $F$.
+			
+			(It is odd that my proof for proposition 13 works for non $a_n \not = 1$, yet doesn't require $R$ to be a UFD. The textbook author assume $a_n=1$ when they did the proof fo any integral domains, but this doesn't seem necessary.) 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{19}
+		Let F be a field and let $f(x) = a_nx^n + a_{n-1}x^{n-1} + ·.· + a_o \in F[x]$. The derivative, $D_x(f(x))$, of $f(x)$ is defined by
+		\begin{align*}
+			D_x(f(x)) = na_nx^{n-1} + (n-1)a_{n- 1}x^{n -2} + ··· + a_1
+		\end{align*}
+		where, as usual, $na = a + a + · · + a$ ($n$ times). Note that $D_x(f(x))$ is again a polynomial with coefficients in $F$. 
+		
+		The polynomial $f(x)$ is said to have a multiple root if there is some field $E$ containing $F$ and some $\alpha \in E$ such that $(x - \alpha)^2$ divides $f(x)$ in $E[x]$. For example, the polynomial $f(x) = (x - 1)^2(x - 2) \in \mathbb{Q}[x]$ has $\alpha = 1$ as a multiple root and the polynomial $f(x) = x^4 + 2x^2 + 1 = (x^2 + 1 )^2 \in \mathbb{R}[x]$ has $\alpha = \pm i \in \mathbb{C}$ as multiple roots. We shall prove in Section 13.5 that a nonconstant polynomial $f(x)$ has a multiple root if and only if $f(x)$ is not relatively prime to its derivative (which can be detected by the Euclidean Algorithm in $F[x]$). Use this criterion to determine whether the following polynomials have multiple roots:
+		\begin{itemize}
+			\item[\textbf{(a)}] $x^3 - 3x - 2 \in \mathbb{Q}[x]$
+			\item[\textbf{(b)}] $x^3 + 3x + 2 \in \mathbb{Q}[x]$
+			\item[\textbf{(c)}] $x^6 - 4x^4 + 6x^3 + 4x^2 - 12x + 9 \in \mathbb{Q}[x]$
+			\item[\textbf{(d)}] Show for any prime $p$ and any $a \in \mathbb{F}_p$ that the polynomial $x^p - a$ has a multiple root.
+		\end{itemize}
+		\begin{proof}{\textbf{(a)}}
+			The derivative of the polynomial is $3x^2-3$, which has factorization $3(x-1)(x+1)$. $-1$ is a root of the original polynomial, so it must share the factor $(x+1)$ with its derivative. Hence, they are not relatively prime and $x^3 - 3x - 2$ has multiple roots.
+		\end{proof}
+		
+		\begin{proof}[\textbf{(b)}]
+			The derivative of the polynomial is $3x^2 + 3$, which does not factor in $\mathbb{Q}[x]$. So, if the polynomials are not relatively prime, there must be a polynomial $ax+b$ such that $x^3 + 3x + 2 = (3x^2 + 3)(ax+b)$. But then $b\cdot3 = 2$ and $b\cdot3=0$, which is impossible in $\mathbb{Q}[x]$. So, the polynomials are relatively prime and $x^3 + 3x + 2$ does nt have multiple roots.
+		\end{proof}
+		
+		\begin{proof}[\textbf{(c)}]
+			The derivative of this polynomial is $6x^5 - 16x^3 + 18x^2 + 8x - 12$. We can use polynomial long division and the Euclidean algorithm or Wolfram Alpha to find the gcd. I'll let you guess which one I did, but the polynomials have gcd $1$. Hence, they are relatively prime and $x^6 - 4x^4 + 6x^3 + 4x^2 - 12x + 9$ therefore does not contain multiple roots.
+		\end{proof}
+
+		\begin{proof}[\textbf{(d)}]
+			The derivative of this polynomial will be $px^{p-1}$, which is $0$ in $\mathbb{F}_p[x]$, which is obviously divisible by $x^p-a$. Hence, $x^p-a$ is not relatively prime to its derivative and it has multiple roots.
+		\end{proof}
+	\end{problem}
+
 \end{document}
