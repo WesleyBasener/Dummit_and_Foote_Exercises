@@ -1,7 +1,7 @@
 \documentclass[10pt]{article}
 
 \usepackage[margin=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array, forest}
 
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
@@ -13,6 +13,34 @@
 		\innercustomgeneric
 	}
 	{\endinnercustomgeneric}
+}
+
+\forestset{
+	default preamble={
+		before typesetting nodes={
+			!r.replace by={[, coordinate, append]}
+		},
+		where n children=0{
+			tier=word,
+		}{
+			diamond, aspect=2,
+		},
+		where level=0{}{
+			if n=1{
+				edge label={node[pos=.2, above] {Y}},
+			}{
+				edge label={node[pos=.2, above] {N}},
+			}
+		},
+		for tree={
+			edge+={thick, -latex},
+			math content,
+			s sep'+=1cm,
+			draw,
+			thick,
+			edge path'={ (!u) -| (.parent)},
+		}
+	}
 }
 
 \newcustomtheorem{customthm}{Theorem}
@@ -606,7 +634,7 @@
 		\end{proof}
 	\end{problem}
 	
-	\begin{problem}{19}
+	\begin{problem}{4.19}
 		Let F be a field and let $f(x) = a_nx^n + a_{n-1}x^{n-1} + ·.· + a_o \in F[x]$. The derivative, $D_x(f(x))$, of $f(x)$ is defined by
 		\begin{align*}
 			D_x(f(x)) = na_nx^{n-1} + (n-1)a_{n- 1}x^{n -2} + ··· + a_1
@@ -637,4 +665,281 @@
 		\end{proof}
 	\end{problem}
 
+
+	\begin{problem}{5.1}
+		Let $F$ be a field and let $f(x)$ be a nonconstant polynomial in $F[x]$. Describe the nilradical
+		of $F[x]/(f(x))$ in terms of the factorization of $f(x)$ (cf. Exercise 29, Section 7.3).
+		\begin{proof}
+			The nilradical of $F[x]/(f(x))$ are those elements which are the root of elements in $(f(x))$. (ie. $a$ is in the niradical if $a^n \in (f(x))$ for some $n$). If $f(x)$ has distinct prime factorization $f_1(x)^{m_1}f_2^{m_2}(x)...f_k^{m_k}(x)$, then the nonzero elements of the nilradical will be $l = f_1(x)^{n_1}f_2^{n_2}(x)...f_k^{n_k}(x)$, where $n_i > 0$ and at least one $n_i < m_i$. The first stipulation is necessary for and guaranties that $l^j \in (f(x))$ for some $j$, because this is a UFD and each $f_i(x)$ is prime. The second stipulation ensures that $l$ is not already in $(f(x))$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.3}
+		Let $p$ be an odd prime in $\mathbb{Z}$ and let $n$ be a positive integer. Prove that $x^n - p$ is irreducible
+		over $\mathbb{Z}[i]$. [Use Proposition 18 in Chapter 8 and Eisenstein's Criterion.]
+		\begin{proof}
+			We want to find an ideal $P$ such that $p\in P$ but $p \not \in P^2$. The ring $\mathbb{Z}[i]$ is principle and hence is a UFD. So an equivalent task is finding a prime $q$ in $\mathbb{Z}[i]$ such that $q|p$ but $q^2 \not | p$. To do this, we consider the possible factors of $p$.
+			
+			(I am ashamed to say I cheated on this one with math overflow. I wasn't sure how proposition 18 applied here. So, I looked it up to find the following lemma)
+			If $p = 3mod4$, then it is prime in $\mathbb{Z}[i]$. So, $p \in (p)$ but $p \not \in (p^2)$. If $p = 1mod4$, then it is the product $(a+bi)(a-bi)$ where both factors are prime. In that case, $p \in (a+bi)$ but $p \not \in (a+bi)^2$. 
+			
+			Either way, there is an ideal containing $p$ whose square does not contain $p$. Hence, by Eisenstein's criterion, $x^n - p$ is irreducible in $\mathbb{Z}[i]$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.5}
+		Let $\phi$ denote Euler's $\phi$-function. Prove the identity $\Sigma_{d|n} \phi(d) = n$, where the sum is extended over all the divisors $d$ of $n$. [First observe that the identity is valid when $n = p^m$ is the power of a prime $p$ since the sum telescopes. Write $n = p^mn'$ where $p$ does not divide $n'$. Prove that $\Sigma_{d|n} \phi(d) = \Sigma_{d''|p^m} \phi(d'')\Sigma_{d'|n'} \phi(d')$ by multiplying out the right hand side and using the multiplicity $\phi(ab) = \phi(a)\phi(b)$ when $a$ and $b$ are relatively prime. Use induction to complete the proof. This problem may be done alternatively by letting $Z$ be the cyclic group of order $n$ and showing that since $Z$ contains a unique	subgroup of order $d$ for each $d$ dividing $n$, the number of elements of $Z$ of order $d$ is $\phi(d)$. Then $|Z|$ is the sum of $\phi(d)$ as $d$ runs over all divisors of $n$.]
+		
+		\begin{proof}{(First method)} 
+			The only numbers that divide $p^m$ are $1, p, p^2,..., p^m$. So, we can rewrite the sum as $\Sigma_{n \leq m} \phi(p^n) = (1) + (p-1) + (p^2 - p) + (p^3-p^2) + ... + (p^m - p^{m-1})$ which telescopes to $p^m$. We are given that $\phi(ab) = \phi(a)\phi(b)$ when $a$ and $b$ are relatively prime. So, if $n = p^mn'$, where $n'$ does not divide $p^m$, then 
+			\begin{align*}
+				\Sigma_{d|n} \phi(d) = \Sigma_{d'|n'}, d''|p^m) \phi(d'd'') = \Sigma_{d'|n'}, d''|p^m) \phi(d')\phi(d'')
+			\end{align*}		
+			Which can be factored into the sums
+			\begin{align*}
+				= \Sigma_{d''|p^m} \phi(d'')\Sigma_{d'|n'} \phi(d') = p^m\Sigma_{d''|n} \phi(d'')
+			\end{align*}
+			There are two cases for $n'$. Either $n'=1$, in which case we are done. Or, by the fundamental theorem of arithmetic, $n'$ is the product of prime powers and we can continmue the algorithm until $n'=1$. So, by induction, the theorem is true.
+			
+			(Second method) Let $Z$ be the cyclic sub group of order $n$, $(\mathbb{Z}/n\mathbb{Z})^x$. By corollary 20, part 1, $(\mathbb{Z}/n\mathbb{Z})^x = (\mathbb{Z}/p_1^{\alpha_1}\mathbb{Z})^x \text{x}...\text{x} (\mathbb{Z}/p_r^{\alpha_r}\mathbb{Z})^x$ where $p_1, ..., p_r$ are primes such that $n = p_1^{\alpha_1} ... p_r^{\alpha_r}$. Hence, $Z$ has a subgroup of order $p_i^{\alpha_i}$ for each of $n$'s $r$ prime divisors.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.7}
+		Prove that the additive and multiplicative groups of a field are never isomorphic. [Consider
+		three cases: when $|F|$ is finite, when $-1 \not= 1$ in $F$, and when $- 1 = 1$ in $F$.]
+		\begin{proof}
+			If $|F|$ is finite, then the multiplicative group must be cyclical. Suppose there is an isomorphism $\phi$ from the multiplicative group to the additive one. Then, the additive group of the ring must be cyclical as well.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.1}
+		Suppose I is an ideal in $F[x_1,...,x_n]$ generated by a (possibly infinite) set $\mathcal{S}$ of polynomials. Prove that a finite subset of the polynomials in $\mathcal{S}$ suffice to generate $I$ . [Use Theorem 21 to write $I = (f_1,...,f_m)$ and then write each $f_i \in I$ using polynomials in	$\mathcal{S}$.]
+		\begin{proof}
+			Corollary 22 states that $F[x_1, ... ,x_n]$ is finitely generated. So there are polynomials $f_0, ..., f_n$ such that $I = (f_0,...,f_m)$. We can write each $f_i$ in terms of elements of $\mathcal{S}$, lending a generator of $I$ in terms of a finite subset of $\mathcal{S}$. Hence, that finite subset of $\mathcal{S}$ generates $I$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.3}
+		Prove that if $\geq$ is any total or partial ordering on a nonempty set then the following are equivalent:
+		\begin{itemize}
+			\item[\textbf{(i)}] Every nonempty subset contains a minimum element
+			\item[\textbf{(ii)}] There is no infinite strictly decreasing sequence $a_1 > a_2 > a_3 > ...$ (This is called a descending chain condition or DCC)
+		\end{itemize}
+		Deduce that general polynomial division always terminates in finitely many steps.
+		\begin{proof}
+			Every set $(a_1, a_2, ....)$ will have a least element if and only if there is some $a_i \in (a_1, a_2, ...)$ such that there is no $a_j \in (a_1, a_2, ...)/a_i$ where $a_i > a_j$. This is true if and only if there is no infinite strictly decreasing sequence $a_1 > a_2 > a_3 > ...$, since such a sequence would necessarily terminate with the sets minimal element.
+			
+			Each step in general polynomial long division ensures that the leading term of the dividend, on the given lexicographic ordering, is reduced. Hence, repeated application will tend towards a polynomial of leading term degree 0.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.5}
+		The grevlex monomial ordering is defined by first choosing an ordering of the variables ${x_1, x_2, ..., x_n }$. then defining $m_1 \geq m_2$ for monomials $m_1, m_2$ if either $\text{deg}m_1 > \text{deg}m_2$ or $\text{deg}m_1 = \text{deg}m_2$ and the first exponent of $x_n, x_{n-1}, ..., x_1$ (in that order) where $m_1$
+		and $m_2$ differ is smaller in $m_1$.
+		\begin{itemize}
+			\item[\textbf{(a)}] Prove that grevlex is a monomial ordering that satisfies $x_1 > x_2 > ... > x_n$·
+			\item[\textbf{(b)}] Prove that the grevlex ordering on $F[x_1, x_2]$ with respect to ${x_1 , x_2}$ is the graded lexicographic ordering with $x_1 > x_2$, but that the grevlex ordering on $F[x_1, x_2, x_3]$ is not the grading of any lexicographic ordering.
+			\item[\textbf{(c)}] Show that $x_1x_2^2x_3 > x_1^2x_3^2 > x2xj > XtX2 > xi > XtX3 > xj' > x 1 > x2$ for the grevlex monomial ordering with respect to ${x_1, x_2, x_3}$.
+		\end{itemize}
+		\begin{proof}{(a)}
+			For $x_i, x_{i+1}$, we can rewrite each as $x_i^1x_{i+1}^0$ and $x_i^0x_{i+1}^1$. Comparing these two terms, it is clear that $x_i > x_{i+1}$ for any $i$.
+		\end{proof}
+		\begin{proof}[(b)]
+			Any two monomials in $R[x_1,x_2]$ will have multidegrees $(a,b)$ and $(c,d)$. Their possible relationship states relevant to grevlex are a subset of $\{e_d,n\}X\{l_1,g_1,e_1\}X\{l_2,g_2,e_2\}$. The first symbol indicates whether the degrees are equal, the second indicates the ordered relation between $a$ and $c$, and the third indicates the ordered relation between $b$ and $d$. For example, if $a=c$ and $d<b$, we have their relation as $(n, e_1, l_2)$, which gets sorted into $m_1 < m_2$ on grevlex.
+			
+			Given two monomials $m_1, m_2$ in such a relational state, their relation on grevlex can be sorted as
+			\begin{align*}
+				m_1 = m_2 : (e, e_1, e_2), (e, l_1, g_2), (e, g_1, l_2)
+			\end{align*}
+			\begin{align*}
+				m_1 < m_2 : (n, e_1, 
+			\end{align*}
+			This is a lot of writing on a problem that isn't super interesting. So, I'm gonna skip the rest for now and maybe forever. Sorry to whoever was enthralled by this stuff.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.7}
+		Order the monomials $x^2z, x^2y^2z, xy^2z, x^3y, x^3z^2, x^2, x^2yz^2 , x^2z^2$ for the lexicographic monomial ordering $x > y > z$, for the corresponding grlex monomial order, and for the grevlex monomial ordering with respect to $\{x, y, z \}$.
+		\begin{proof}
+			The lexicographic ordering is
+			\begin{align*}
+				x^3y > x^3z > x^2y^2z > x^2yz^2 > x^2z^2 > x^2z > x > xy^2z
+			\end{align*}
+			The grlex monomial ordering is 
+			\begin{align*}
+				x^2y^2z > x^2yz^2 > x^3y > x^3z > x^2z^2 > xy^2z > x^2z > x
+			\end{align*}
+			Finally, the grevlex ordering is
+			\begin{align*}
+				x^2yz^2 > x^2y^2z > xy^2z > x^2z^2 > x^3z > x^3y > x^2z > x
+			\end{align*}
+		\end{proof}
+	\end{problem}
+	
+	(I am doing an even numbered exercise because problem 9 was another question on monomial ordering and I didn't feel like it was as good a use of my time)
+	\begin{problem}{6.10}
+		Suppose $I$ is a monomial ideal generated by monomials $m_1, ..., m_k$. Prove that the polynomial $f \in F[x_1 , . . . . X_n]$ is in $I$ if and only if every monomial term $f_i$ of $f$ is a multiple of one of the $m_i$. [For polynomials $a_1 , ..., a_k \in F[x_1, ..., x_n]$ expand the polynomial $a_1 m_1 + ...+ a_km_k$ and note that every monomial term is a multiple of at least one of the $m_1$.] Show that $x^2yz+3xy^2$ is an element of the ideal $J = (xyz, y^2) \subset F[x,y,z]$ but is not an element of the ideal $I' = (xz^2, y^2)$.
+		\begin{proof}
+			Let $f$ be any element of $I$. Then, $f$ is the product of some collection of polynomials $f_1, ..., f_k$ and the monomials generating $I$. So, we have $f = a_1m_1 + ... + a_km_k$. The monomials of $f$ will be the sum of all $a_{i,j}m_i$ where $a_{i,j}$ is a monomial in $f_i$ and the sum of the multidegrees of $a_{i,j}$ and $m_i$ are equal. With some relabeling, we can write this as $\Sigma a_im_1 + \Sigma a_im_2 + ... + \Sigma a_im_k$. Since the degree of the total sum must be less than the degree of each of the $m_j$, we can divide out my any $m_j$ by multiplying the entire term by $m_j^{-1}$,
+			\begin{align*}
+				m_j(\Sigma a_im_1m_j^{-1} + \Sigma a_im_2m_j^{-1} + ... + \Sigma a_im_km_j^{-1})
+			\end{align*}
+			Thus, each monomial term in $f$ is divisible by some $m_j$.
+			
+			We can lable the generators of $I$ as $m_1 = xyz, m_2=y^2$. It is easy to see that $x^2yz + 3xy^2 = x(xyz) + 3x(y^2) = xm_1 + 3xm_2$. By the above theorem, $x^2yz + 3xy^2$ is an element of $I$. However, because the term $x^yz$ is not a multiple of any monomial generator of $I'=(xz^2, y^2)$, it is not in $I'$.
+		\end{proof}
+	\end{problem}
+
+	\begin{problem}{6.11}
+		Fix a monomial ordering on $R = F[x_1, ..., x_n]$ and suppose $\{g_1, ..., g_m\}$ is a Gr\"obner basis for the ideal $I$ in $R$. Prove that $h \in LT(I)$ if and only if $h$ is a sum of monomial terms each divisible by some $LT(g_i)$, $1 \leq i \leq m$. [Use the previous exercise.]
+		\begin{proof}
+			By definition, the leading terms of the Gr\"obner basis are a basis for the the set of leading terms in $I$. So, $h$ is in $LT(I)$ if and only if $h$ is in $(LT(g_1), ..., LT(g_m))$. Since $h, LT(g_1), ..., LT(g_m)$ are all monomials, the previous exercise allows us to conclude that $h$ is in $(LT(g_1), ..., LT(g_m))$ if and only if $h$ is the sum of monomial terms each divisible by some $LT(g_i)$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.13}
+		Suppose $I$ i s a monomial ideal with monomial generators $g_1, ..., g_m$. Use Buchberger's Criterion to prove that $\{g_1, ..., g_m\}$ is a Gr\"obner basis for $I$.
+		\begin{proof}
+			Buchberger's Criterion states that $\{g_1, ..., g_m\}$ is a Gr\"obner basis for I if an only if $S(g_i, g_j) \cong 0 \text{mod}I$ for all $i \not = j$. We wish to show this for the given basis.
+			Since $g_1, ..., g_m$ are monomials, $LT(g_i)=g_i$ for all $i$. The function $S(g_i, g_j)$ hence becomes
+			\begin{align*}
+				S(g_i, g_j) = \frac{M}{LT(g_i)}g_i - \frac{M}{LT(g_j)}g_j = \frac{M}{g_i}g_i - \frac{M}{g_j}g_j = M - M = 0
+			\end{align*}
+			
+			Hence, Buchberger's Criterion holds and $\{g_1, ..., g_m\}$ is therefore a Gr\"obner basis.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.15}
+		Fix a monomial ordering on $R = F[x_1, ..., x_n]$.
+		\begin{itemize}
+			\item[\textbf{(a)}]Prove that $\{g_1, ..., g_m\}$ is a minimal Gr\"obner basis for the ideal $I$ in $R$ if and only if $\{LT(g_1), ..., LT(g_m)\}$ is a minimal generating set for $LT(I)$.
+			\item[\textbf{(b)}]Prove that the leading terms of a minimal Gr\"obner basis for $I$ are uniquely determined and the number of elements in any two minimal Gr\"obner bases for I is the same. [Use (a) and the previous exercise.]
+		\end{itemize}
+		\begin{proof}{(a)}
+			By definition, a Gr\"obner basis is minimal if each leading term is monic and no term $g_j$ is divisible by any $LT(g_i)$ for $i \not= j$.
+			
+			Suppose $\{g_1, ..., g_m\}$ is a minimal Gro\"obner basis. Further suppose for the sake of contradiction that $(LT(g_1), ..., LT(g_m))$ is not minimal, say $LT(g_1) | LT(g_2)$. Then we can remove $g_1$ from $\{g_1, ..., g_m\}$ and the smaller basis $\{g_2, ..., g_m\}$ would still be, by definition, a Gr\"obner basis, which is a contradiction. Hence, if $\{g_1, ..., g_m\}$ is minimal then so is $(LT(g_1), ..., LT(g_m))$.
+			
+			Now suppose $(LT(g_1), ..., LT(g_m))$ is minimal. Then, $LT(g_j)$ is not divisble by any $LT(g_i)$. Thus, $g_j$ is also not divisible by any $LT(g_j)$. Therefore, if $(LT(g_1), ..., LT(g_m))$ is minimal then so is $\{g_1, ..., g_m\}$.
+		\end{proof}
+		
+		\begin{proof}[(b)]
+			By exercise 14, the generating set $(LT(g_1), ..., LT(g_m))$ is unique. Hence, the leading terms in the minimal Gr\"obner basis $\{g_1, ..., g_m\}$ are uniquely determined. Since $\{g_1, ..., g_m\}$ is only minimal if $(LT(g_1), ..., LT(g_m))$ is minimal, any Gr\"obner basis for $I$ must have $m$ terms.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.17}
+		Fix the lexicographic ordering $x > y$ on $F[x , y]$. Use Buchberger's Criterion to show that ${x^2y - y^2, x^3 - xy}$ is a Gr\"obner basis for the ideal $I = (x^2y - y^2, x^3 - xy)$.
+		\begin{proof}
+			We only need to show that $S(x^2y - y^2, x^3 - xy) = 0$.
+			
+			The lcm of the leading terms is $x^3y$. Plugging this into the formula yields
+			\begin{align*}
+				S(x^2y - y^2, x^3 - xy) = x(x^2y - y^2) - y(x^3 - xy) = x^3y - xy^2 - x^3y - xy^2 = 0
+			\end{align*}
+			Thus, by Buchberger's Criterion, ${x^2y - y^2, x^3 - xy}$ is a Gr\"obner basis.
+			
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.19}
+		Fix the lexicographic ordering $x > y$ on $F[x , y]$.
+		\begin{itemize}
+			\item[\textbf{(a)}]Show that $\{x^3 - y, x^2y - y^2, xy^2 - y^2, y^3 - y^2\}$ is the reduced Gr\"obner basis for the ideal $I = (-x^3 + y, x^2y - y^2)$.
+			\item[\textbf{(b)}] Determine whether the polynomial $f = x^6 - x^5y$ is an element of the ideal $I$.
+		\end{itemize}
+		\begin{proof}{(a)}
+			We will show this by first proving that $\{x^3 - y, x^2y - y^2, xy^2 - y^2, y^3 - y^2\}$ is a gr\"obner basis for $I$, using Buchberger's Criterion. Then, we show that it is fully reduced.
+			
+			For easier notation, we label the elements of $\{x^3 - y, x^2y - y^2, xy^2 - y^2, y^3 - y^2\}$ as $g_1$ to $g_4$ respective of their given order. We also label the ideal they generate as $J$ Now we compute $S(g_i, g_j)$ for each $g_i \not = g_j$.
+			\begin{align*}
+				S(g_1, g_2) = 
+				y(x^3-y) - x(x^2y - y^2) = 
+				x^3y - y^2 - x^3y + xy^2 = 
+				xy^2 - y^2 = 
+				-x(x^2y - y^2) + y(x^3 - y)
+				-xg_2 + yg_1 \in J
+			\end{align*}
+			\begin{align*}
+				S(g_1, g_3) = y^2(x^3 - y) - x^2(xy^2 - y^2) =
+				x^3y^2 - y^3 - x^3y^2 + x^2y^2 =
+				y(x^2y - y^2) = y(g_2) \in J
+			\end{align*}
+			\begin{align*}
+				S(g_1, g_4) = y^3(x^3 - y) - x^3(y^3 - y^2) =
+				x^3y^3 - y^4 - x^3y^3 + x^3y^2 =
+				-y^2(x^3 - y^2) = y^2(g_1) \in J
+			\end{align*}
+			\begin{align*}
+				S(g_2, g_3) = y(x^2y - y^2) - x(xy^2 - y^2) =
+				x^2y^2 - y^3 - x^2y^2 + xy^2 =
+				-y(-x^3+y) - x(x^2y - y^2) = 
+				yg_1 - xg_2 \in J
+			\end{align*}
+			\begin{align*}
+				S(g_2, g_4) = y^2(x^2y - y^2) - x^2(y^3 - y^2) =
+				x^2y^3 - y^4 - x^2y^3 + x^2y^2 =
+				y(x^2y - y^2) - y(y^3 - y^2) =
+				yg_2 - yg_4 \in J
+			\end{align*}
+			\begin{align*}
+				S(g_3, g_4) = y(xy^2 - y^2) - x(y^3 - y^2) =
+				xy^3 - y^3 - xy^3 + xy^2 =
+				(xy^2 - y^2) - (y^3 - y^2) \in J
+			\end{align*}
+			
+			Hence, $\{x^3 - y, x^2y - y^2, xy^2 - y^2, y^3 - y^2\}$ is a Gr\"obner basis. To see that it is fully reduced, note that no leading term divides any other leading term and every leading term is monic.
+			
+			Now, we need to show that it is a basis for $I$. We again for ease of notation will denote the generators of $I$ as $f_1$ and $f_2$. First note that $f_1 = -g_1$ and $f_2 = g_2$. So, $I$ is a generated by $J$. We also have that $g_1 = -f_1$, $g_2 = f_2$, $g_3 = -yf_1 - xf_2$, and $g_4 = yf_2 - (x-1)(-yf_1 - xf_2)$. Thus, $I$ generates $G$. The ideals generate each other, so they must be the same ideal. 
+			
+			Therefore, $\{x^3 - y, x^2y - y^2, xy^2 - y^2, y^3 - y^2\}$ is the minimal Gr\"obner basis for $I$.
+		\end{proof}
+		\begin{proof}[(b)]
+			By theorem 23.2, we can use general polynomial division. Let $f=x^6 - x^5y$ and as before, the elements of the Gr\"obner basis are $g_1, ..., g_4$.
+			The leading term $x^6$ is divisible by $LT(g_1)$. So we iterate to $q_1 = x^3$ and $f=-x^5y + yx^3$. The leading term is again divisible by $LT(g_1)$. So, we iterate to $q_1 = x^3 - x^2y$ and $f=yx^3 - y^2x^2$. The leading term is divisible by $LT(g_2)$. So we iterate to $q_2=x$ and $f=-y^2x^2 + xy^2$. This leading term is divisible by $LT(g_3)$, so we iterate to $q_3=-x$ and $f=0$.
+			
+			The algorithm terminated with no remainder. By Theorem 23.3, $x^6 - x^5y$ is in $I$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.21}
+		Fix the lexicographic ordering $x > y$ on $F[x, y]$. Use Buchberger's Criterion to show that	$\{x^2y - y^2, x^3 - xy\}$ is a Gr\"obner basis for the ideal $I = (x^2y - y^2, x^3 - xy)$.
+		\begin{proof}
+			The lcm of the leading terms is $x^3y$. Applying the $S$ function to the polynomials gives
+			\begin{align*}
+				S(x^2y - y^2, x^3 - xy) = \frac{x^3y}{x^2y}(x^2y - y^2) - \frac{x^3y}{x^3}(x^3 - xy) = x(x^2y - y^2) - y(x^3 - xy) = x^3y - xy^2 - x^3y + xy^2 = 0
+			\end{align*}
+			Since $0$ is trivially in $I$, we have that $\{x^2y - y^2, x^3 - xy\}$ is a Gr\"obner basis for $I$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.23}
+		Show that the ideals $I = (x^2y + xy^2 - 2y, x^2 + xy - x + y^2 - 2y , xy^2 - x - y + y^3 )$ and
+		$J = (x - y^2 , xy - y, x^2 - y)$ in $F[x,y]$ are equal.
+		\begin{proof}
+			Label the polynomials in the generator of $I$ as $f_1$ to $f_3$ and the polynomials in $J$'s generator as $g_1$ to $g_3$
+			
+			By corollary 28, $I$ and $J$ are the same if and only if they have the same reduced Gr\"obner basis. 
+			
+			We can use Buchberger's algorithm to find these bases.
+			We begin with the first ideal. $S(f_1, f_2) = 
+			(x^2y + xy^2-2y) - y(x^2 + xy - x + y^2 - 2y) = 
+			x^2y + xy^2 - 2y - x^2y -xy^2 + xy - y^3 - 2y^2 =
+			xy - y^3 - 2y^2 - 2y$
+				
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.25}
+		Show that the reduced Gr\"obner basis using the lexicographic ordering $x > y$ for the ideal $I = (x^2 + xy^2, x^2 - y^3, y^3 - y^2)$ is $\{x^2 - y^2, y^3 - y^2, xy^2 + y^2\}$.
+		\begin{proof}
+			
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{6.27}
+		
+	\end{problem}
 \end{document}
