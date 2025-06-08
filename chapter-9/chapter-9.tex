@@ -919,16 +919,7 @@
 		Show that the ideals $I = (x^2y + xy^2 - 2y, x^2 + xy - x + y^2 - 2y , xy^2 - x - y + y^3 )$ and
 		$J = (x - y^2 , xy - y, x^2 - y)$ in $F[x,y]$ are equal.
 		\begin{proof}
-			Label the polynomials in the generator of $I$ as $f_1$ to $f_3$ and the polynomials in $J$'s generator as $g_1$ to $g_3$
 			
-			By corollary 28, $I$ and $J$ are the same if and only if they have the same reduced Gr\"obner basis. 
-			
-			We can use Buchberger's algorithm to find these bases.
-			We begin with the first ideal. $S(f_1, f_2) = 
-			(x^2y + xy^2-2y) - y(x^2 + xy - x + y^2 - 2y) = 
-			x^2y + xy^2 - 2y - x^2y -xy^2 + xy - y^3 - 2y^2 =
-			xy - y^3 - 2y^2 - 2y$
-				
 		\end{proof}
 	\end{problem}
 	
@@ -940,6 +931,9 @@
 	\end{problem}
 	
 	\begin{problem}{6.27}
-		
+		Show that ${x^3 - y^3, x^2 +xy^2 + y^4 , x^2y +xy^3 + y^2}$ is a reduced Gr\"obner basis for the ideal $I$
+		in the example following Corollary 28 with respect to the grlex monomial ordering. (Note
+		that while this gives three generators for $I$ rather than two for the lexicographic ordering
+		as in the example, the degrees are smaller.)
 	\end{problem}
 \end{document}

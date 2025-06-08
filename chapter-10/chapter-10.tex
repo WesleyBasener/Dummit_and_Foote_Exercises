@@ -1,0 +1,353 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{tikz-cd} 
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\newtheorem{definition}{Definition}
+
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+	
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+	
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+	
+	\title{Exercises from Chapter 10}
+	\author{Wesley Basener}
+	\maketitle
+	
+	I am skipping the first few exercises of each section in this chapter because they didn't look challenging enough to be helpful.
+	\begin{problem}{1.15}
+		If $M$ is a finite abelian group then $M$ is naturally a $\Z$-module. Can this action be extended
+		to make $M$ into a $\Q$-module?
+		\begin{proof}
+			No, consider an order two element $m \in M$. Supposing such a $\Q$-module were possible, multiplying $m$ by $\frac{2}{2} = (\frac{1}{2})(2)$ yields
+			\begin{align*}
+				\frac{2}{2}m = 1m = m \not= e = \frac{1}{2}e = \frac{1}{2}2m
+			\end{align*}
+			Which of course contradicts part 2-b of the definition of modules.
+		\end{proof}
+	\end{problem}
+		
+	\begin{problem}{1.17}
+		Let $T$ be the shift operator on the vector space $V$ and let $e_1, ..., e_n$ be the usual basis vectors
+		described in the example of $F[x]$-modules. If $m \geq n$ find $(a_m x^m +a_{m-1}x^{m-1} + ... + a_0 )e_n$.
+		\begin{proof}
+			Each $x^i$ shifts the $1$ in the basis over $i$ spaces left. Every $x^i$ where $i > n$ will leave $e_i = 0$. Hence, we have,
+			\begin{align*}
+				(a_m x^m +a_{m-1}x^{m-1} + ... + a_0 )e_n =
+				(a_n, a_{n-1}, ..., a_0, 0, ..., 0)
+			\end{align*} 
+			where $a_0$ is in the $n$th spot.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.19}
+		Let $F = \R$ , let $V = \R^2$ and let $T$ be the linear transformation from $V$ to $V$ which is projection onto the $y$-axis. Show that $V$, $0$, the $x$-axis and the $y$-axis are the only $F[x]$­
+		submodules for this $T$.
+		\begin{proof}
+			Suppose for the sake of contradiction that this is not true, then there must exist a submodule $N$ with an element $(a,b)$ not in either of the nontrivial submodules mentioned. (ie. $a, b, \not = 0$). 
+			
+			Let $(c,d)$ be any other element of $M$ not in $N$. Multiplying $(a,b)$ by $(\frac{d}{b} - \frac{c}{a})x + \frac{c}{a}$ yields
+			\begin{align*}
+				((\frac{d}{b} - \frac{c}{a})x + \frac{c}{a})(a,b) =
+				(0, d-\frac{cb}{a}) + (c,\frac{cb}{a}) =
+				(c,d)
+			\end{align*}
+			Sending $(a,b)$ outside of its submodule $N$ is obviously a contradiction. Hence, there are no other non trivial submodules of $M$. In other words, $V$, $0$, the $x$-axis, and the $y$-axis are the only submodules of $M$ on this $T$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.21}
+		Let $n \in \Z^+, n > 1$ and let $R$ be the ring of $n \times n$ matrices with entries from a field $F$. Let
+		$M$ be the set of $n \times n$ matrices with arbitrary elements of $F$ in the first column and zeros
+		elsewhere. Show that $M$ is a submodule of $R$ when $R$ is considered as a left module over
+		itself, but $M$ is not a submodule of $R$ when $R$ is considered as a right $R$-module.
+		\begin{proof}
+			Consider two elements of $M$: $a$ and $b$. Let $r$ be any element of $R$. If $R$ is a right module, we have
+			\begin{align*}
+				a + rb = \begin{pmatrix}
+					a_{1,1} & \dots & 0 \\
+					\vdots &  & \vdots \\
+					a_{n,1} & \dots & 0
+				\end{pmatrix}
+				+
+				\begin{pmatrix}
+					r_{1,1} & \dots & r_{1,n} \\
+					\vdots &  & \vdots \\
+					r_{n,1} & \dots & r_{n,n}
+				\end{pmatrix}
+				\begin{pmatrix}
+					b_{1,1} & \dots & 0 \\
+					\vdots &  & \vdots \\
+					b_{n,1} & \dots & 0
+				\end{pmatrix} = 
+				\begin{pmatrix}
+					a_{1,1} + r_{1,*} \cdot b_{*,1} & \dots & 0 \\
+					\vdots &  & \vdots \\
+					a_{1,n} + r_{1,*} \cdot b_{*,1} & \dots & 0
+				\end{pmatrix}
+			\end{align*}
+			which is in $M$. Hence $M$ is a submodule of $R$, when $R$ is a left module over itself.
+			
+			If we consider $R$ as a right module over itself, multiplication of any elememt $a$ in $M$ by any element $r$ not in $M$ yields.
+			\begin{align*}
+				ar = \begin{pmatrix}
+					a_{1,1} & \dots & 0 \\
+					\vdots &  & \vdots \\
+					a_{n,1} & \dots & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					r_{1,1} & \dots & r_{1,n} \\
+					\vdots &  & \vdots \\
+					r_{n,1} & \dots & r_{n,n}
+				\end{pmatrix} = 
+				\begin{pmatrix}
+					a_{1,1}r_{1,1} & \dots & a_{1,1}r_{1,n} \\
+					\vdots &  & \vdots \\
+					a_{n,1}r_{1,1} & \dots & a_{n,1}r_{1,n}
+				\end{pmatrix}
+			\end{align*}
+			which is not necessarily in $M$. Therefore, $M$ is not a submodule of $R$, when $R$ is a right module over itself.  
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.1}
+		Prove that if $A$ and $B$ are sets of the same cardinality, then the free modules $F(A)$ and
+		$F(B)$ are isomorphic.
+		\begin{proof}
+			If $A$ and $B$ have the same cardinality, then there is a bijective map $\phi : A \rightarrow B$. We can extend this map to the function $\psi: F(A) \rightarrow F(B)$, with the definition $\psi(r_1a_1 + r_2a_2 + ... + r_na_n) = r_1\phi(a_1) + r_2\phi(a_2) + ... + r_n\phi(a_n)$. 
+			
+			This map is a homomorphis since $\psi(r_1a_1 + ... + r_na_n + r(r_1'a_1' + ... + r_m'a_m')) = r_1\phi(a_1) + ... + r_n\phi(a_n) + r(r_1'\phi(a_1') + ... + r_n'\phi(a_n'))$. 
+			
+			Furthermore, for unique $a_i$, $\psi(r_1a_1 + ... + r_na_n)=0$ would necessitate $\phi(a_i) = \phi(a_j)$ for some $j \not= i$, which is impossible since $\phi$ is a bijection. Hence, the kernel of the homomorphism is $0$ and it is thus an isomorphism. Therefore, $F(A)$ is isomorphic to $F(B)$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.3}
+		Show that the $F[x]$-modules in Exercises 18 and 19 of Section I are both cyclic.
+		\begin{proof}
+			In exercise 18, the $F[x]$-module is $\R^2$ with $T$ being the rotation about the origin by $\pi/2$ radians. The element $(1,0)$ can generate any other element $(a,b)$ with the polynomial $bx + a$. 
+			
+			In exercise 19, the $F[x]$-module is again $\R^2$ but this time with $T$ being the projection onto the $y$-axis. We showed in this exercise that any element $(a,b) \in \R^2$ not on the $y$ or $x$ axis can be mapped to any other element in $(c,d) \in \R^2$ with the polynomial $(\frac{d}{b} - \frac{c}{a})x + \frac{c}{a}$. Thus, any such element can generate the entire module.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.5}
+		Let $R$ be an integral domain. Prove that every finitely generated torsion $R$-module has a
+		nonzero annihilator i.e., there is a nonzero element $r \in R$ such that $rm = 0$ for all $m \in M$ here $r$ does not depend on $m$ (the annihilator of a module was defined in Exercise 9 of Section 1). Give an example of a torsion $R$-module whose annihilator is the zero ideal.
+		\begin{proof}
+			Let $\{m_1, ..., m_n\}$ be the generators for $M$ and let $t_1, ..., t_n \in R$ be the elements in $R$ such that $r_im_i=0$ for all $i$. Multiplying the product of the $t_i$ by any element in $M$ yields $(t_1...t_n)(r_1m_1 + ... + r_nm_n = (t_2...t_mr_1)t_1m_1 + ... + (t_1...t_{n-1}r_n)t_nm_n = 0$. Hence, $(t_1...t_n)$ is the desired element.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.7}
+		Let $N$ be a submodule of $M$. Prove that if both $M/N$ and $N$ are finitely generated then so
+		is $M$.
+		\begin{proof}
+			We have that the set of elements $x_1, x_2, ...$ such that $x_1 +N, x_2 + N, ...$ are unique elements in $M/N$ is finitely generated. Say, that this set is generated by $\{g_1, g_2, ... g_n\}$. Also say that $N$ is generated by $\{n_1, ... , n_m\}$. 
+			
+			Every element in $m \in M$ maps to a unique element in some set $x+N \in M/N$, for some $x \in M$. Say for example, $m = x' + n'$. Both $x'$ and $n'$ have unique generations $x' = \Sigma r_ig_i$ and $n' = \Sigma r_j n_j$. Hence, $m = \Sigma r_ig_i + \Sigma r_j n_j$ is a unique generation of $m$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.9}
+		An $R$-module $M$ is called irreducible if $M \not = 0$ and if $0$ and $M$ are the only submodules of M. Show that $M$ is irreducible if and only if $M \not= 0$ and $M$ is a cyclic module with any nonzero element as generator. Determine all the irreducible $Z$-modules.
+		\begin{proof}
+			Suppose $M$ is irreducible. Then for any two elements $m, n \in M$, with $m\not= 0$ there must be an $r \in R$ such that $rm = n$. If this were not so, $m$ would generate a non trivial submodule of $M$. Hence, any nonzeoro element generates $M$. We also have that $M\not=0$.
+			
+			Now, suppose $M \not = 0$ and that $M$ is cyclic, being generated by any nonzero element. Then for any elements $m, n \in M$ with $m \not= 0$ there is an $r \in R$ such that $rm=n$. In other words, we can send any nonzero $m \in M$ to any other element in $M$. Hence, no elements in $M$ are a part of a non trivial submodule.
+			
+			If $M$ is a irreducible $Z$-module, then any non zero $m$ in $M$ must generate $M$. This means there must be an integer $n$ such that $nm = m..(\text{n times})..m =e$. Thus, the irreducible $Z$ modules are those modules whose base group is cyclically generated by any non element item. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.11}
+		Show that if $M_1$ and $M_2$ are irreducible $R$-modules, then any nonzero $R$-module homomorphism from $M_1$ to $M2$ is an isomorphism. Deduce that if $M$ is irreducible then $\text{End}_R(M)$ is a division ring (this result is called Schur's Lemma). [Consider the kernel and the image.]
+		\begin{proof}
+			Let $\phi : M_1 \rightarrow M_2$ be a homomorphism from $M_1$ to $M_2$. Suppose that $m \in \text{ker}(\phi)$ and $m \not = 0$. From exercise 9, we know that any nonzero element of $M_1$ generates the entire module. So there must be an $r \in R$ such that $rm \not \in \text{ker}(\phi)$. But this is a contradiction since $0 \not = \phi(rm) = r\phi(m) = r0 = 0$. Hence the kernel of $\phi$ is precisely the element $0$ and $\phi$ is therefore an isomorphism.
+			
+			It has been established that $\text{End}_R(M)$ is a ring, with multiplication being defined as function composition. If $\psi \in \text{End}_R(M)$, then by the prior proof, $\psi$ is an isomorphism. Thus, it has an inverse $\psi^{-1}$. Multiplying these elements in $\text{End}_R(M)$ lends $\psi^{-1}\circ\psi =\psi\circ\psi^{-1} = 1$ the identity element on $\text{End}_R(M)$. Therefore, every element of $\text{End}_R(M)$ has a multiplicative inverse and it is a division ring.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.13}
+		Let $R$ be a commutative ring and let $F$ be a free $R$-module of finite rank. Prove the following isomorphism of $R$-modules: $\text{Hom}_R(F, R) \cong F$.
+		\begin{proof}
+			 Define $\{a_0,...,a_n\}$ as the finite generators of F. Let $\phi \in \text{Hom}_R(F, R)$, and define a map $\pi$ between $\phi$ and $F$ as $\pi(\phi) = \phi(a_1)a_1 + ... + \phi(a_n)a_n$. This function is a homomorphism since \begin{align*}
+			 	\pi(\psi + r\phi) = \psi(a_1) + ... + \psi(a_n) + r(\phi(a_1) + ... + \phi(a_n)) = \pi(\psi) + r\pi(\phi)
+			 \end{align*}
+			 The kernel of $\pi$ is also only the zero function of $\text{Hom}_R(F, R)$, since any other function would send some $a_i$ to a nonzero $r$. Therefore, $\pi$ is an isomorphism. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.15}
+		An element $e \in R$ is called a central idempotent if $e^2 = e$ and $er=re$ for all $r \in R$. If $e$ is a central idempotent in $R$, prove that $M = eM \oplus (1 -e)M$. [Recall Exercise 14 in Section 1.]
+		\begin{proof}
+			Exercise 14 asked us to prove that $zM$ is a submodule of $M$ for any $z$ in the center of $R$. This is done by noticing that $zm_1 + r(zm_2) = e(m_1 + rm_2)$. 
+			
+			We have that both $e$ and $1$ (so by extent $1-e$) are in the center of $M$. So $eM$ and $(e-1)M$ are both submodules of $M$.
+			
+			For any $r$ in $R$, either $e$ factors out of $r$, in which case $r(1-e)M = r'(e-e^2)M = r'(e-e)M = r'0M = 0$. Or, $e$ does not factor out of $r$, in which case $r(1-e)M \cap eM = \emptyset$. So, $(1-e)M$ and $eM$ only overlap at $0$.
+			
+			We can get any $m \in M$ from the direct sum $eM \oplus (1 -e)M$ with the element $em + (1-e)m = m$. Hence, $M = eM \oplus (1 -e)M$ spans $M$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.17}
+		In the notation of the preceding exercise, assume further that the ideals $A_t, ..., A_k$ are
+		pairwise comaximal (i.e., $A_i + A_j = R$ for all $i \not= j$). Prove that
+		$M/(A_1...A_k)M \cong M/A_1M\times...\times M/A_k M$. [See the proof of the Chinese Remainder Theorem for rings in Section 7.6.]
+		\begin{proof}
+			The previous exercise proved that the map $M \rightarrow M/A_1M \times ... \times M/A_kM$ defined by $m \rightarrow (m+A_1M,...,m+A_kM)$ is a homomorphism with kernel $A_1M\cap...\cap A_kM$.
+			
+			We can extend this map as one between $M/(A_1...A_k)M$ and $M/A_1M\times...\times M/A_k M$. Doing so preserves the same kernel. And, we find that the kernel $A_1M\cap...\cap A_kM$ is percisly the $0$ element of $M/(A_1...A_k)M$. Therefore, the homomorphism becomes an isomorphism between these two modules.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.19}
+		Show that if $M$ is a finite abelian group of order $a = p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k}$ then, considered as a $\Z$-module, $M$ is annihilated by $(a)$, the $p_i$-primary component of $M$ is the unique Sylow $p_i$-subgroup of $M$ and $M$ is isomorphic to the direct product of its Sylow subgroups.
+		\begin{proof}
+			Any element of $M$ must have order dividing $a$. Say, $m \in M$ has order $p$ and $p = ap'$. Then $p$ is in $(a)$ and $m^p = m^{p'}m^a = m^{p'}0 = 0$. Thus, $(a)$ annihilated by $(a)$.
+			
+			If $m$ is in the $p_i$-primary component of $M$, then $m^{p_i^{\alpha_i}}=0$. Thus, $m$ has order $p_i^{\alpha_i}$ and is in the Sylow $p_i$ subgroup of $M$.
+			
+			The Sylow subgroups of $M$ are pairwise disjoint. So, by proposition 5, $M$ is isomorphic to the direct product of its Sylow subgroups.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.21}
+		Let $I$ be a nonempty index set and for each $i \in I$ let $N_i$ be a submodule of $M$. Prove that
+		the following are equivalent:
+		\begin{itemize}
+			\item[\textbf{(i)}]the submodule of $M$ generated by all the $N_i$'s is isomorphic to the direct sum of the $N_i's$.
+			\item[\textbf{(ii)}]if $\{i_1, i_2, ..., i_k\}$ is any finite subset of $I$ then $N_{i_1} \cap (N_{i_2} + \dots + N_{i_k}) = 0$
+			\item[\textbf{(iii)}] if $\{i_1, i_2, ..., i_k\}$ is any finite subset of $I$ then $N_1 + \dots + N_k = N_1 \oplus \dots \oplus N_k$
+			\item[\textbf{(iv)}] for every element $x$ of the submodule of $M$ generated by the $N_i$'s there are unique elements $a_i \in N_i$ for all $i \in I$ such that all but a finite number of the $a_i$ are zero and
+			$x$ is the (finite) sum of the $a_i$.
+		\end{itemize}
+		\begin{proof}
+			This is just proposition 5 with the added necessity of the axiom of choice. 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.23}
+		Show that any direct sum of free $R$-modules is free.
+		\begin{proof}
+			Let $F_1, ..., F_k$ all be free $R$-modules over the respective sets $A_1, ..., A_k$. Any element of their direct product can be decomposed into $x_1 + ... + x_k$ where $x_i \in F_i$. We can further decompose this into $r_{1,1}a_{1,1} + ... + r_{1,m}a_{1,m} + ... + r_{k,1}a_{k,1} + ... + r_{k,n}a_{k,n}$, where $r_{i,j} \in R$ and $a_{i,j} \in A_i$. Hence, any element of the direct product of the free groups is free over the set $A_1 \cup ... \cup A_k$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.25}
+		In the construction of direct limits, Exercise 8 of Section 7.6, show that if all $A_i$ are $R$-modules and the maps $\rho_{ij}$ are $R$-module homomorphisms, then the direct limit $A = \text{lim}A_i$ may be given the structure of an $R$-module in a natural way such that the maps $\rho_i : A_i \rightarrow A$ are all $R$-module homomorphisms. Verify the corresponding universal property (part (e)) for $R$-module homomorphisms $\phi_i : A_i \rightarrow C$ commuting with the $\rho_{ij}$.
+		\begin{proof}
+			Let $a$ and $b$ be two elements of $A$. Define $ra$ as $\rho_{ij}(ra') = r\rho_{ij}(a')$ for all $a' \in a$ and define $a+b$ as $\rho_{ik}(a') + \rho_{ik}(b')$ for all $a' \in a$ and $b' \in b$ where $i,j \leq k$. The $R$-module structure of the $A_i$ ensures that we have defined a $R$-module on $A$.
+			
+			For any element $a$ in $A$, define the map $\phi:A \rightarrow C$ as $\phi(a) = \{a' | \phi_j \circ \rho_{ij} (a') = a\}$. This map is a homomorphism since
+			\begin{align*}
+				\phi(a + rb) = \{ x | \phi_j \circ \rho_{ij} (x) = a + rb\} = \{a' + rb' |  \phi_j \circ \rho_{ij} (a' + rb') = a + rb\} = \{a' | \phi_j \circ \rho_{ij} (a') = a\} + r\{b' | \phi_j \circ \rho_{kj} (b') = b\}
+			\end{align*}
+			for $r \in R$ and $a' \in a, b' \in b$. (//TODO make this more formal and fleshed out; prove uniqueness.)
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{3.27}
+		\textit{(Free modules over noncommutative rings need not have a unique rank)} Let $M$ be the
+		$\Z$-module $Z \times Z \times ...$ of Exercise 24 and let $R$ be its endomorphism ring, $R= \text{End}_{\Z}(M)$	(cf. Exercises 29 and 30 in Section 7.1). Define $\phi_1, \phi_2 \in R$ by
+		\begin{align*}
+			\phi_1(a_1, a_2, a_3, ...) = (a_1, a_3, a_5,...)
+		\end{align*}
+		\begin{align*}
+			\phi_1(a_1, a_2, a_3, ...) = (a_2, a_4, a_6,...)
+		\end{align*}
+		\begin{itemize}
+			\item[\textbf{(a)}]Prove that $\{\phi_1 , \phi_2\}$ is a free basis of the left $R$-module $R$. [Define the maps $\psi_1$ and $\psi_2$ bY $\psi_1(a_1, a_2, ...) = (a_1, 0, a_2, 0, ...)$ and $\psi_2(a_1, a_2, ...) = (O, a_1 , 0, a_2, ...)$. Verify that $\phi_i\psi_i = 1, \phi_1\psi_2 = 0 = \phi_2\psi_1$ and $\psi_1\phi_1 + \psi_2\phi_2 = 1$. Use these relations to prove that $\phi_1, \phi_2$ are independent and generate $R$ as a left $R$-module.]
+			\item[\textbf{(b)}] Use (a) to prove that $R \cong R^2$ and deduce that $R \cong R^n$ for all $n \in \Z^+$.
+		\end{itemize}
+	\end{problem}
+	
+	\begin{definition}{Tensor Products}
+		Let $S$ be a ring and $N$ be a left $R$-module. In the free group $F(S\times N)$, define the subgroup $H$ of the free group as all elements of the form $(s_1+s_2,n)-(s_1,n)-(s_2,n), (s,n_1+n_2)-(s,n_1)-(s,n_2), (sr,n)-(s,rn)$ where $s, s_1, s_2 \in S, n, n_1, n_2 \in N, r \in R$. Then the tensor product $S \otimes_R N$ is defined as $F(S\times N)/H$
+	\end{definition}
+	
+	\begin{theorem}{8}
+		Let $R$ be a subring of $S$, let $N$ be a left $R$-module and let $\iota : N \rightarrow S \otimes_R N$ be the $R$-module homomorphism defined by $\iota(n) = 1\oplus n$. Suppose that $L$ is any left $S$ module (hence also an $R$-module) and that $\varphi: N \rightarrow L$ is an $R$-module homomorphism	from $N$ to $L$. Then there is a unique $S$-module homomorphism $\phi : S \otimes_R N \rightarrow L$ such	that $\phi$ factors through $\phi$, i.e., $\phi = \varphi \circ \iota$ and the diagram
+		\[ \begin{tikzcd}
+			N \arrow[rd, "\varphi"'] \arrow{r}{\iota} & S\otimes_RN \arrow{d}{\phi} \\%
+			& L
+		\end{tikzcd}
+		\]
+		commutes. Conversely, if $\phi : S \otimes_R N \rightarrow L$ is an $S$-module homomorphism then $\phi = \iota \circ \varphi$ is an $R$-module homomorphism from $N$ to $L$.
+		\begin{proof}
+			
+		\end{proof}
+	\end{theorem}
+	
+	\begin{problem}{4.1}
+		Let $f:R \rightarrow S$ be a ring homomorphism from the ring $R$ to the ring $S$ with $f(1_R)=1_S.$ Verify the details that $sr=sf(r)$ defines a right $R$-action on $S$ under which $S$ is an $(S,R)$-bimodule.
+		\begin{proof}
+			In virtue of $S$ being a ring, we already have that $sr=sf(s) \in S$ is a left $S$-module. So we only need to show that it is also a right $R$-module by proving part $2$ of the definition of modules on page 337.
+			
+			For a, we have that $s(r_1 + r_2) = sf(r_1 + r_2) = sf(r_1) + sf(r_2) = sr_1 + sr_2$. For part b, we have $s(r_1r_2) = sf(r_1r_2) = sf(r_1)f(r_2) = s(r_1)(r_2)$. For c, we have $(s_1 + s_2)r = (s_1 + s_2)f(r) = s_1f(r) + s_2f(r)$. Lastly, for part d, we have $s1_R = sf(1_R) = s1_S = s$. Together, these conditions imply that the set is a right $R$-module and is hence an $(S,R)$-bimodule.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.3}
+		Show that $\C \otimes_\R \C$ and $\C \otimes_\C \C$ are both left $\R$-modules but are not isomorphic as $\R$-modules.
+		\begin{proof}
+			In virtue of the fact that $\C$ is a left $\R$-module, both tensor products are left $\R$-modules.
+			
+			Suppose $\phi$ is an isomorphism between $\C \otimes_\R \C$ and $\C \otimes_\C \C$. Then $\phi((1,i)-(i,1)) = (1,i) - (i,1) = (1,i)-(1,i)=0$. Which is a contradiction because on $\C \otimes_\R \C$, $(1,i)-(i,1) \not = 0$. So, there is no such isomorphism.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.5}
+		Let $A$ be a finite abelian group of order $n$ and let $p^k$ be the largest power of the prime $p$ dividing $n$. Prove that $\Z/p^k\Z \otimes_\Z A$ is isomorphic to the Sylow $p$-subgroup of $A$.
+		\begin{proof}
+			Let $\phi$ be the homomorphism from $A$ to $\Z/p^k\Z \otimes_\Z A$ defined by $\phi(a) = 1\otimes a$.
+			
+			Let $a$ be an element of $A$ and $|a|=m$. If $a$ is not in the Sylow $p^k$-subgroup of $A$, then  and $(p^k, m) = 1$. So, by Bezout's lemma, there are numbers $x$ and $y$ such that $mx+p^ky = 1$. Therefore, $\phi(a) = 1\otimes a = mx \otimes a = 1 \otimes xma = 1 \otimes 0$.
+			
+			On the other hand, if $a$ is in the Sylow $p^k$-subgroup of $A$, then $(p^k, m)=m$, then $1 \otimes a \not = 0$. 
+			
+			Thus, $a$ is in the kernel of the homomorphism, if and only if $a$ is not in the Sylow $p^k$-subgroup of $A$. So we have $\Z/p^k\Z \otimes_\Z A \cong A/\text{ker}(\phi)$, which is of course isomorphic to the Sylow $p^k$-subgroup of $A$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.7}
+		If $R$ is any integral domain with quotient field $Q$ and $N$ is a left $R$-module, prove that every element of the tensor product $Q \otimes_R N$ can be written as a simple tensor of the form $(1/d) \otimes n$ for some nonzero $d \in R$ and some $n \in N$.
+		\begin{proof}
+			Let $a/d \otimes b$ be any element of $Q \otimes_R N$, then we can use the distributive property of tensor products to yield
+			\begin{align*}
+				a/d \otimes b = 1/d \otimes ab
+			\end{align*}
+			Which is obviously the desired format. Since every element of $Q \otimes_R N$ has the form $a/d \otimes b$, we are done.
+		\end{proof}
+	\end{problem}
+\end{document}

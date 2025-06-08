@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.15)  3 JUN 2025 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.15)  6 JUN 2025 16:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**chapter-9.tex
-(./chapter-9.tex
+**chapter-10.tex
+(./chapter-10.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -240,8 +240,8 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \backup@length=\skip59
 \ar@cellbox=\box100
 )
-(/usr/share/texlive/texmf-dist/tex/latex/forest/forest.sty
-Package: forest 2017/07/14 v2.1.5 Drawing (linguistic) trees
+(/usr/share/texlive/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -527,187 +527,48 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
+(/usr/share/texlive/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.code.tex
-File: tikzlibraryshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
+zlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.geometric.code.tex
-File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.misc.code.tex
-File: tikzlibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.misc.code.tex
-File: pgflibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.symbols.code.tex
-File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.symbols.code.tex
-File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.arrows.code.tex
-File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.arrows.code.tex
-File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.callouts.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.callouts.code.tex))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryshapes.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
-s.multipart.code.tex
-File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodepartlowerbox=\box112
-\pgfnodeparttwobox=\box113
-\pgfnodepartthreebox=\box114
-\pgfnodepartfourbox=\box115
-\pgfnodeparttwentybox=\box116
-\pgfnodepartnineteenbox=\box117
-\pgfnodeparteighteenbox=\box118
-\pgfnodepartseventeenbox=\box119
-\pgfnodepartsixteenbox=\box120
-\pgfnodepartfifteenbox=\box121
-\pgfnodepartfourteenbox=\box122
-\pgfnodepartthirteenbox=\box123
-\pgfnodeparttwelvebox=\box124
-\pgfnodepartelevenbox=\box125
-\pgfnodeparttenbox=\box126
-\pgfnodepartninebox=\box127
-\pgfnodeparteightbox=\box128
-\pgfnodepartsevenbox=\box129
-\pgfnodepartsixbox=\box130
-\pgfnodepartfivebox=\box131
+zlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.
+code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen277
+\pgfarrowlength=\dimen278
+\pgfarrowwidth=\dimen279
+\pgfarrowlinewidth=\dimen280
 )))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibraryfit.code.tex
-File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersection
-s.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
-)
-\pgf@intersect@solutions=\count307
-) (/usr/share/texlive/texmf-dist/tex/latex/pgfopts/pgfopts.sty
-Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks43
-\pgfopts@list@add@b@toks=\toks44
-)
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count308
-)
-(/usr/share/texlive/texmf-dist/tex/latex/elocalloc/elocalloc.sty
-Package: elocalloc 2016/12/15 v0.03 local allocation for LaTeX 2015+ (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-
-(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-01-22 L3 programming layer (loader) 
+\c@innercustomgeneric=\count307
+\c@definition=\count308
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count309
-\l__pdf_internal_box=\box132
-))
-Package: xparse 2023-10-10 L3 Experimental document command parser
+\l__pdf_internal_box=\box112
 )
-(/usr/share/texlive/texmf-dist/tex/latex/inlinedef/inlinedef.sty
-Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
-\ID@toks=\toks45
-\ID@count=\count310
-)
-\ID@usercommands=\toks46
-\safeloop@depth=\count311
-\safeRKloop@depth=\count312
-\forest@temp@dimen=\dimen277
-\forest@temp@count=\count313
-\forest@n=\count314
-\forest@temp@global@count=\count315
-\forest@temp@toks=\toks47
-\forest@temparray@M=\count316
-\forest@temparray@N=\count317
-\forest@global@temparray@M=\count318
-\forest@global@temparray@N=\count319
-\forest@isnum@count=\count320
-\forest@isdim@nonintpart=\count321
-\forest@isdim@dimen=\dimen278
-\forest@sort@m=\count322
-\forest@sort@k=\count323
-\forest@sort@p=\count324
-\bracket@content=\toks48
-\bracket@afterthought=\toks49
-\forest@node@maxid=\count325
-\forest@process@left@M=\count326
-\forest@process@left@N=\count327
-\forest@process@right@M=\count328
-\forest@process@right@N=\count329
-\forest@process@saved@M=\count330
-\forest@process@saved@N=\count331
-\forest@process@result@M=\count332
-\forest@process@result@N=\count333
-\forest@process@n=\count334
-\forest@nodewalk@branch@toks=\toks50
-\forest@nodewalk@shortsteps@resolution=\toks51
-\forest@do@dynamics=\toks52
-\forest@box=\box133
-\forest@xg=\dimen279
-\forest@yg=\dimen280
-\forest@xs=\dimen281
-\forest@ys=\dimen282
-\forest@pi@toks=\toks53
-\forest@segment@toks=\toks54
-\forest@PIi@toks=\toks55
-\forest@PIii@toks=\toks56
-\forest@copy@in=\read3
-\forest@copy@out=\write4
-\forest@externalize@max@outer@n=\count335
-\forest@externalize@inner@n=\count336
-)
-\c@innercustomgeneric=\count337
+(./chapter-10.aux)
+\openout1 = `chapter-10.aux'.
 
-(./chapter-9.aux)
-\openout1 = `chapter-9.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -745,17 +606,17 @@ LaTeX Font Info:    ... okay on input line 55.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count338
-\scratchdimen=\dimen283
-\scratchbox=\box134
-\nofMPsegments=\count339
-\nofMParguments=\count340
-\everyMPshowfont=\toks57
-\MPscratchCnt=\count341
-\MPscratchDim=\dimen284
-\MPnumerator=\count342
-\makeMPintoPDFobject=\count343
-\everyMPtoPDFconversion=\toks58
+\scratchcounter=\count310
+\scratchdimen=\dimen281
+\scratchbox=\box113
+\nofMPsegments=\count311
+\nofMParguments=\count312
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count313
+\MPscratchDim=\dimen282
+\MPnumerator=\count314
+\makeMPintoPDFobject=\count315
+\everyMPtoPDFconversion=\toks44
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -765,246 +626,67 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (51.7745pt too wide) detected at line 123
-[]
- []
-
-[2] [3]
-Overfull \hbox (45.92903pt too wide) in paragraph at lines 272--273
-[]\OT1/cmr/m/n/10 In $\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 x[]; 
-:::; x[]\OT1/cmr/m/n/10 ]$, two ho-mo-ge-neous poly-no-mi-als of de-gree $\OML/
-cmm/m/it/10 k$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 m$ \OT1/cmr/m/n/10 can be 
-writ-ten as the sum $^^F[]\OML/cmm/m/it/10 a[]x[]x[]:::x[]$
- []
-
-[4] [5] [6] [7] [8] [9]
-Overfull \hbox (26.2028pt too wide) detected at line 572
-[]
- []
-
-[10]
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-27.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-29.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-38.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-38.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-38.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-38.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-41.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-42.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-42.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-42.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 6
-42.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-[11] [12] [13] [14]
-Overfull \hbox (14.27477pt too wide) in paragraph at lines 829--830
-\OT1/cmr/m/n/10 mal Gr^^?obner ba-sis $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 g[]; 
-:::; g[]\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 are uniquely de-ter-mined. Since $\
-OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 g[]; :::; g[]\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n
-/10 is only min-i-mal if $(\OML/cmm/m/it/10 LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
- g[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; :::; LT\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
-0 g[]\OT1/cmr/m/n/10 ))$
- []
-
-[15]
-Overfull \hbox (39.44084pt too wide) detected at line 864
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Overfull \hbox (61.00844pt too wide) detected at line 275
 []
  []
 
 
-Overfull \hbox (16.28363pt too wide) detected at line 880
-[]
+Overfull \hbox (0.59178pt too wide) in paragraph at lines 290--291
+[]\OT1/cmr/m/n/10 Prove that $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 ^^^[]; ^^^[]\O
+MS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 is a free ba-sis of the left $\OML/cmm/m/it/1
+0 R$\OT1/cmr/m/n/10 -module $\OML/cmm/m/it/10 R$\OT1/cmr/m/n/10 . [De-fine the 
+maps $\OML/cmm/m/it/10  []$ \OT1/cmr/m/n/10 and $\OML/cmm/m/it/10  []$ \OT1/cmr
+/m/n/10 bY $\OML/cmm/m/it/10  []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]; a[]; :::
+\OT1/cmr/m/n/10 ) =
  []
 
-
-Overfull \hbox (11.59625pt too wide) detected at line 886
-[]
- []
-
-
-Overfull \hbox (20.78494pt too wide) detected at line 913
-[]
- []
-
-[16] [17] (./chapter-9.aux)
+[4] [5] [6] (./chapter-10.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 23998 strings out of 476182
- 568671 string characters out of 5795595
- 1951975 words of memory out of 5000000
- 45678 multiletter control sequences out of 15000+600000
- 566060 words of font info for 67 fonts, out of 8000000 for 9000
+ 14838 strings out of 476182
+ 305233 string characters out of 5795595
+ 1954975 words of memory out of 5000000
+ 36588 multiletter control sequences out of 15000+600000
+ 565366 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,10n,107p,1585b,232s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/r2-q5/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600
-pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on chapter-9.pdf (17 pages, 262694 bytes).
+ 98i,15n,107p,533b,1032s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on chapter-10.pdf (6 pages, 205553 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
