@@ -1,0 +1,108 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{tikz-cd} 
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+\begin{document}
+	
+	\title{Exercises from Dummit and Foote Chapter 14 on Galois Theory}
+	\author{Wesley Basener}
+	\maketitle
+	
+	\begin{problem}{1.1}
+		\begin{itemize}
+			\item[\textbf{(a)}]
+				Show that if the field $K$ is generated over $F$ by the elements $\alpha_1, ..., \alpha_n$ then an
+				automorphism $\sigma$ of $K$ fixing $F$ is uniquely determined by $\sigma (\alpha_1), ..., \sigma (\alpha_n )$. In
+				particular show that an automorphism fixes $K$ if and only if it fixes a set of generators
+				for $K$.
+			\item[\textbf{(b)}]
+				Let $G \leq \text{Gal}(K/F)$ b e a subgroup of the Galois group of the extension $K/F$ and
+				suppose $\sigma_1, ..., \sigma_k$ are generators for $G$. Show that the subfield $E/F$ is fixed by $G$ if
+				and only if it is fixed by the generators $\sigma_1, ..., \sigma_k$.
+		\end{itemize}
+		\begin{proof}{(a)}
+			  Let $\sigma$ be any automorphism on $K$ fixing $F$. Then, for any $k = a_0 + a_1\alpha_1 + ... + a_n\alpha_n$ in $K$, $\sigma(k) = \sigma(a_0) + \sigma(a_1)\sigma(\alpha_1) + ... + \sigma(a_n)\sigma(\alpha_n)$. Using the fact that $\sigma$ fixes $F$, we have $\sigma(k) = a_0 + a_1\sigma(\alpha_1) + ... + a_n\sigma(\alpha_n)$. Hence the image of any $k \in K$ on $\sigma$ is uniquely determined by $\sigma (\alpha_1), ..., \sigma (\alpha_n )$.
+			  From this, it is obvious that $\sigma$ fixes $K$ if it fixes the generators for $K$.
+		\end{proof}
+		\begin{proof}[(b)]
+			Denote the generators of $E$ over $F$ by $\alpha_1, ..., \alpha_m$. Suppose $G$ fixes $E/F$. From part (a), this is true if and only if $\sigma_i(\alpha_j) = \alpha_j$ for all $i \in [1,k], j \in [1,m]$. Hence, any element of a $E/F$ is fixed by any element of $G$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.3}
+		Determine the fixed field of complex conjugation on $\C$.
+		\begin{proof}
+			Complex conjugation is the function $\sigma : a+bi \mapsto a-bi$, which obviously fixes $a$. Hence, the fixed field of complex conjugation is $\R$ the real numbers.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.5}
+		Determine the automorphisms of the extension $\Q(\sqrt[4]{2})/\Q(\sqrt{2})$ explicitly.
+		\begin{proof}
+			There is only one basis element to this extension, namely $\sqrt[4]{2}$. Since $-\sqrt[4]{2} \not = \sqrt[4]{2}$, the automorphism $\sigma : a + b\sqrt[4]{2} \mapsto a - b\sqrt[4]{2}$ is not the identity. Hence, the automorphisms of this extension are $\{1, \sigma\}$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.7}
+		This problem determines $\text{Aut}(\R/\Q)$.
+		\begin{itemize}
+			\item[\textbf{(a)}]
+				Prove that any $\sigma \in \text{Aut}(\R/\Q)$ takes squares to squares and takes positive reals to positive reals. Conclude that $a < b$ implies $\sigma a < \sigma b$ for every $a, b \in \R$ Conclude that $a<b$ implies $\sigma a<\sigma b$ for every $a,b \in \R$.
+			\item[\textbf{(b)}]
+				Prove that $-\frac{1}{m} < a - b < \frac{1}{m}$ implies $-\frac{1}{m} < \sigma a - \sigma b < \frac{1}{m}$ for every positive integer $m$. Conclude that $\sigma$ is a continuous map on $\R$.
+			\item[\textbf{(c)}]
+				Prove that any continuous map on $\R$ which is the identity on $\Q$ is the identity map, hence $\text{Aut}(\R/\Q)=1$. 
+		\end{itemize}
+		\begin{proof}{(a)}
+			Let $\sigma$ be an automorphism on $\R/\Q$. Suppose $x$ is a real square. Then, $x = p^2$ for real number $p$. Hence, we have $\sigma(x) = \sigma(p^2) = \sigma(p)\sigma(p)$. Thus, $\sigma$ sends squares to squares. 
+			
+			Let $y$ be any positive real number. Since $y$ is positive, $\sqrt{y}$ is real. From the first part of this proof, we know that $\sigma(y) = \sigma(\sqrt{y}\sqrt{y}) = q^2$ for some real number $q$. Since we are limited to the real numbers, $q^2$ is positive. Hence, $\sigma(y)$ is positive.
+			
+			For any $a,b \in \R$, $a<b$ implies $0 < b-a$. Hence, from the prior paragraph, $0 < \sigma(b) - \sigma(a)$. Adding $\sigma(a)$ to both sides yields $\sigma(a) < \sigma(b)$. Note that setting $b=0$ proves that $\sigma$ sends negatives to negatives.
+		\end{proof}
+		\begin{proof}[(b)]
+			Suppose $a,b$ are real numbers such that $-\frac{1}{m} < a - b < \frac{1}{m}$ for some positive integer $m$.
+			
+			Since $m$ is an integer, it can be rewritten as $\Sigma_{i=0}^m 1$. Hence, $\sigma(m) = \Sigma_{i=0}^m \sigma(1) = \Sigma_{i=0}^m 1 = m$.
+			
+			We can rewrite the above inequality as $-1 < m(a-b) < 1$. Which is the same as having $m(a-b) - 1$ is negative and $m(a-b) + 1$ is positive. From part (a), we know $\sigma$ sends positives to positives and negatives to negatives. Hence, $\sigma(m(a-b) - 1) = m(\sigma(a) - \sigma(b)) - 1$ is negative and $\sigma(m(a-b) - 1) = m(\sigma(a) - \sigma(b)) + 1$ is positive. Which of course implies $-\frac{1}{m} < \sigma(a) - \sigma(b) < \frac{1}{m}$
+			
+			To show that $\sigma$ is continuous, let $x$ be any real number and let $\epsilon > 0$. We can find a natural number $N$ such that $\frac{1}{N} < \epsilon$. Then, for any $x_0$ such that $|x-x_0| < \frac{1}{N}$, we have $|\sigma(x) - \sigma(x_0)| < \frac{1}{N} < \epsilon$. Hence, $\sigma$ is continuous.
+		\end{proof}
+		\begin{proof}[(c)]
+			Suppose $\sigma \in \text{Aut}(\R/\Q)$ fixes $\Q$. Let $x$ be any real number. Then by the density of the rationals in $\R$, for any $\epsilon > 0$, there exists some $q \in \Q$ such that $|x-q| < \epsilon$ Hence, $|\sigma(x-q)| = |\sigma(x)-q| < \epsilon$ which is only possible if $\sigma(x) = x$. Thus, any such $\sigma$ mus be the identity function. Therefore, $\text{Aut}(\R/\Q)=1$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.9}
+		Determine the fixed field of the automorphism $t \mapsto t + 1$ of $k(t)$.
+		\begin{proof}
+			Any element of $k(t)$ will have the form $\frac{\Sigma a_i t^i}{\Sigma b_i t^i}$ with $\gcd(\Sigma a_i x^i, \Sigma b_i x^i) = 1$. 
+			Suppose we have an element such that $\frac{\Sigma a_i (t+1)^i}{\Sigma b_i (t+1)^i} = \frac{\Sigma a_i t^i}{\Sigma b_i t^i}$. Then, $\frac{\Sigma a_i (t+1)^i}{\Sigma b_i (t+1)^i} - \frac{\Sigma a_i t^i}{\Sigma b_i t^i} = 0$ and since both fractions remain irreducible, we would have $\Sigma b_i (t+1)^i = \Sigma b_i t^i$. Thus, we would also have $\Sigma a_i (t+1)^i = \Sigma a_i (t)^i$. Hence, the fixed field of $k(t)$ is precisely the set of rational functions whose numerators and denominators are both fixed by the automorphism.
+		\end{proof}
+	\end{problem}
+\end{document}

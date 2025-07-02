@@ -1,0 +1,304 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage{tikz-cd} 
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+\begin{document}
+	
+	\title{Exercises from Dummit and Foote Chapter 13 on Field Theory}
+	\author{Wesley Basener}
+	\maketitle
+	\begin{problem}{1.1}
+		Show that $p(x) = x^3 + 9x +6$ is irreducible in $\Q[x]$. Let $\theta$ be a root of $p(x)$. Find the inverse of $1 + \theta$ in $\Q(\theta)$.
+		\begin{proof}
+			The polynomial $p(x)$ is monic and all non leading terms are divisible by $3$ with the constant term not divisible by $3^2$. So, by Eisenstein's criterion, the polynomial is irreducible.
+			
+			By the Euclidean property, there are polynomials $a(x)$ and $b(x)$ such that
+			\begin{align*}
+				a(x)(1+x) + b(x)(x^3 + 9x + 6) = 1
+			\end{align*}
+			Polynomial gives us
+			\begin{align*}
+				(x^3 + 9x + 6) = (x+1)(x^2-x+10) - 4
+			\end{align*}
+			Hence, the inverse of $\theta + 1$ is $\frac{1}{4}\theta^2-\frac{1}{4}\theta+\frac{5}{2}$. This can be verified with
+			\begin{align*}
+				(\theta + 1)(\frac{1}{4}\theta^2-\frac{1}{4}\theta+\frac{5}{2}) = \frac{1}{4}(\theta^3 - 9\theta + 10) = \frac{1}{4}(\theta^3 + 9\theta + 6) + 1 = 1 
+			\end{align*}
+		\end{proof}
+	\end{problem}
+		
+	\begin{problem}{1.3}
+		Show that $x^3 + x + 1$ is irreducible over $\mathbb{F}_2$ and let $\theta$ be a root. Compute the powers of $\theta$ in $\mathbb{F}_2(\theta)$.
+		\begin{proof}
+			The polynomial is congruent to $1 \text{ mod }2$ whenever it is evaluated at $1$ and $0$. Hence, it has no roots in $\mathbb{F}_2$ and is irreducible there.
+			
+			We immediately have that $\theta^3 = \theta+1$. We can also see that $\theta = \theta^3+1$ so $\theta^2 = \theta^6 + 1$. Dividing the base polynomial by this renders $\theta^2$ as a remainder, so their is no reduced form of $\theta^2$. $\theta$ is obviously itself and $\theta^0=1$.
+			
+			For $\theta^n$ where $n>3$, we can factor $n$ into a sum of  $3$s and some $b$ equal to either $1$ or $2$ as $n=3a+b$ yielding $\theta^n = (\theta)^{3a} \cdot \theta^b = (\theta+1)^a\cdot\theta^b$. Repeating the process for $a$ and factoring when needed will eventually terminate with a polynomial of degree less than $3$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.5}
+		Suppose $\alpha$ is a rational root of a monic polynomial in $\Z[x]$. Prove that $\alpha$ is an integer.
+		\begin{proof}
+		Let $a,b \in \Z$ be such that $\frac{a}{b} =\alpha$ is fully reduced. By the rational roots theorem, $b$ divides the leading term of the polynomial, which is $1$. So, $b$ is either $1$ or $-1$. In either case, $\alpha$ is an integer.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.7}
+		Prove that $x^3 - nx + 2$ is irreducible for $n \neq  -1, 3, 5$.
+		\begin{proof}
+			I'm gonna come back to this later.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.1}
+		Let $\mathbb{F}$ be a finite field of characteristic $p$. Prove that $\mathbb{F} = p^n$ for some positive integer $n$.
+		\begin{proof}
+			The field $\mathbb{F}$ is an extension of its prime subfield $(1_\mathbb{F})$. By theorem 17, $\mathbb{F}$ being finite implies that it is a extended from $1_\mathbb{F}$ by a finite number or elements $\alpha_1, \alpha_2, ..., \alpha_i$. Each element has finite dimension $k_1, k_2, ..., k_j$. Hence, by lemma 16 and theorem 14, the field has degree $n=k_1k_2...k_j$, and any element can be represented as a linear sum $a_1\beta_1 + a_2\beta_2 + ... + a_{n}\beta_{n}$, with $a_1, ..., a_n \in (1_\mathbb{F})$ and each $\beta_l$ being powers of roots of polynomials with solutions $\alpha_1, ..., \alpha_i$. Since their are $p$ choices for each $a_l$, it is easy to see that there are $p^n$ unique choices for any element in $\mathbb{F}$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.3}
+		Determine the minimal polynomial over $\Q$ for the element $1 + i$.
+		\begin{proof}
+			The minimal polynomial is the irreducible monic polynomial of minimal degree with $1+i$ as a root. Since there is obviously no degree 1 polynomial with such a root, we start by solving the quadratic equation for $1+i$
+			\begin{align*}
+				(1+i)^2 + b(1+i) + c = 0 \rightarrow 2i + bi + b + c = 0
+			\end{align*}
+			The equation is solved by setting $b=-2$ and $c=2$. Hence, the minimal polynomial is $x^2 - 2x + 2x$
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.5}
+		Let $F = \Q(i)$. Prove that $x^3 - 2$ and $x^3-3$ are irreducible over F.
+		\begin{proof}
+			Both of these follow from Eisenstein's criterion, since $2$ and $3$ are not squares.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.7}
+		Prove that $\Q(\sqrt{2} + \sqrt{3}) = \Q(\sqrt{2}, \sqrt{3})$ [one inclusion is obvious, for the other consider $(\sqrt{2} + \sqrt{3})^2$ etc.]. Conclude that $[\Q(\sqrt{2} + \sqrt{3}):\Q] = 4$. Find an irreducible polynomial
+		satisfied by $\sqrt{2} + \sqrt{3}$.
+		\begin{proof}
+			Since any element of $\Q(\sqrt{2} + \sqrt{3})$ contains a rational number, $\sqrt{2}$, $\sqrt{3}$, it is obviously a s subset of the field generated by these elements, namely $\Q(\sqrt{2}, \sqrt{3})$ Thus, we have $ \Q(\sqrt{2} + \sqrt{3}) \subseteq \Q(\sqrt{2}, \sqrt{3})$.
+			
+			For the other inclusion, consider $(\sqrt{2} + \sqrt{3})^3 = 11\sqrt{2} + 9\sqrt{3}$. Hence, subtracting this from $11(\sqrt{2} + \sqrt{3})$ yields $2\sqrt{3}$. From there, it is obvious that $\sqrt{2}$ and $\sqrt{3}$ are in $\Q(\sqrt{2} + \sqrt{3})$.
+			
+			By theorem 14, we have $4 = [\Q(\sqrt{2},\sqrt{3}):\Q] = [\Q(\sqrt{2}+\sqrt{3}):\Q]$.
+			
+			To find the minimal polynomial, we first note that we are looking for a fourth degree term. Raising $(\sqrt{2}+\sqrt{3})$ to the fourth power gives us $49+20\sqrt{6}$. Raising it to the second gives $5+2\sqrt{6}$. So, to cancel the $\sqrt{6}$ out, we set the $x^4$ coeficient to $1$ and $x^2$'s coefficient to $-10$. Setting the constant to $1$ leaves us with
+			\begin{align*}
+				(\sqrt{2}+\sqrt{3})^4 - 10(\sqrt{2}+\sqrt{3})^2 + 1 = 0
+			\end{align*}
+			Hence, the minimal polynomial for this term is $x^4 - 10x^2 + 1$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.9}
+		Let $F$ be a field of characteristic $\not = 2$. Let $a,b$ be elements of the field $F$ with $b$ not $a$ square in $F$. Prove that a necessary and sufficient condition for $\sqrt{a + \sqrt{b}} = \sqrt{m} + \sqrt{n}$	for some $m$ and $n$ in $F$ is that $a^2 - b$ is a square in $F$. Use this to determine when the field $\Q(\sqrt{a + \sqrt{b}}) (a, b \in \Q)$ is biquadratic over $\Q$.
+		\begin{proof}
+			The term $\sqrt{a+\sqrt{b}}$ is a root of the polynomial $x^4 - 2ax^2 - b + a^2$. 
+			
+			First, suppose $\sqrt{m} + \sqrt{n} = \sqrt{a+\sqrt{b}}$. Then, $\sqrt{m} + \sqrt{n}$ is a root of the polynomial and the term $(\sqrt{m} + \sqrt{n})^4 + 2a(\sqrt{m} + \sqrt{n})^2$ must be in $\Q$. So $2a$ must be such that the roots in the following expression cancel.
+			\begin{align*}
+				4\sqrt{nm^3} + 4\sqrt{nm^3} + m^2 + n^2 + 6nm + 2a(n + \sqrt{nm} + m)
+			\end{align*}
+			To do this, we solve for $a$ in the equation $2a(2\sqrt{nm}) = -4\sqrt{nm^3} - 4\sqrt{mn^3}$. The solution is of course $m+n = a$. Plugging this result in for $a$ in the previous equation yields
+			\begin{align*}
+				4\sqrt{nm^3} + 4\sqrt{nm^3} + m^2 + n^2 + 6nm + 2a(n + \sqrt{nm} + m) = -m^2 +2mn - n^2 = -(m-n)^2
+			\end{align*}
+			Ultimately, we have
+			\begin{align*}
+				-(m-n)^2 + a^2 -b = 0
+			\end{align*}
+			whenever $\sqrt{m} + \sqrt{m} = \sqrt{a + \sqrt{b}}$. Hence, $a^2 -b$ is a square.
+			
+			Now suppose that $a^2-b$ is a square. Then, let $m = \frac{2a-1}{2}$ and $n=\frac{1}{2}$. We have 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.11}
+		\begin{itemize}
+			\item[\textbf{(a)}] Let $\sqrt{3 + 4i}$ denote the square root of the complex number $3 + 4i$ that lies in the first quadrant and let ,$\sqrt{3-4i}$ denote the square root of $3 - 4i$ that lies in the fourth quadrant. Prove that $[\Q(\sqrt{3 + 4i} + \sqrt{3 - 4i}) : \Q ] = 1$.
+			\item[\textbf{(b)}] Determine the degree of the extension $\Q(\sqrt{1 + \sqrt{-3}}+\sqrt{1-\sqrt{-3}})$ over $\Q$.
+		\end{itemize}
+		\begin{proof}{(a)}
+			This is the same as proving $\sqrt{3 + 4i} + \sqrt{3 - 4i}$ is a rational number. Using Euler's identity
+			\begin{gather*}
+				\sqrt{3 + 4i} + \sqrt{3 - 4i} 
+				\\=\\
+				 \sqrt{5}(\cos(\arctan(\frac{4}{3})) + i\sin(\arctan(\frac{4}{3})))^\frac{1}{2} + \sqrt{5}(\cos(\arctan(\frac{4}{3})) + i\sin(\arctan(\frac{4}{3})))^\frac{1}{2}
+				\\
+				\\=\\
+				2\sqrt{5} \cos(\frac{1}{2}\arctan(\frac{4}{3})))
+				=
+				\sqrt{20} \cos(\frac{1}{2}\arctan(\frac{4}{3})))
+			\end{gather*}
+			Next, we factor the trigonometric functions with the identies $\cos(\frac{\theta}{2}) = \pm \sqrt{\frac{1+\cos(\theta)}{2}}$ and $\cos(\arctan(\theta)) = \frac{1}{\sqrt{1+\theta^2}}$.
+			\begin{gather*}
+				\sqrt{20}(\cos(\frac{1}{2}\arctan(\frac{4}{3})) = \pm \sqrt{20}\sqrt{\frac{1+\cos(\arctan(\frac{4}{3}))}{2}}
+				\\=\\
+				\pm \sqrt{20}\sqrt{\frac{1+\frac{1}{1+(\frac{4}{3})^2}}{2}} = \pm \sqrt{10 + \frac{90}{25}}
+				\\=\\
+				\pm \sqrt{\frac{340}{25}} = \pm \sqrt{16} = \pm 4
+			\end{gather*}
+			Hence, $\Q(\sqrt{1 + \sqrt{-3}}+\sqrt{1-\sqrt{-3}}) \cong \Q$ and the degree of the extension is $1$.
+		\end{proof}
+		\begin{proof}[(b)]
+			We work in a similar manner to reduce the expression. By Euler's identity we have
+			\begin{gather*}
+				\sqrt{1 + \sqrt{-3}}+\sqrt{1-\sqrt{-3}}
+				\\=\\
+				\sqrt{2}(\cos(\arctan(\sqrt{3})) + i\sin(\arctan(\sqrt{3})))^\frac{1}{2} + \sqrt{2}(\cos(\arctan(\sqrt{3})) - i\sin(\arctan(\sqrt{3})))^\frac{1}{2}
+				=
+				\sqrt{2}(\cos(\frac{1}{2}\arctan(\sqrt{3})) + i\sin(\frac{1}{2}\arctan(\sqrt{3}))) + \sqrt{2}(\cos(\frac{1}{2}\arctan(\sqrt{3})) - i\sin(\frac{1}{2}\arctan(\sqrt{3})))
+				\\=\\
+				2\sqrt{2}\cos(\frac{1}{2}\arctan(\sqrt{3}))
+			\end{gather*}
+			Using the same identities as before,
+			\begin{gather*}
+				= 2\sqrt{2}\sqrt{\frac{1+\frac{1}{\sqrt{1+\sqrt{3}^2}}}{2}} 
+				= 
+				\sqrt{4 + \frac{4}{\sqrt{4}}} = \sqrt{6}
+			\end{gather*}
+			Hence, this extension is obviously of degree $2$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.13}
+		Suppose $F = \Q(\alpha_1, \alpha_2, ..., \alpha_n)$ where $\alpha_i^2 \in Q$ for $i = 1 , 2, . . . , n$. Prove that $\sqrt[3]{2} \not \in F$.
+		\begin{proof}
+			Since each $\alpha_i^2$ is in $\Q$, $[\Q(\alpha_i) : \Q] = 2$ for each $i$. So the degree of $\Q(\alpha_1)$ will be $1$ or $2$. The degree of $\Q(\alpha_1, \alpha_2) \Q(\alpha_1)(\alpha_2)$ will either be $1,2,$ or $2\cdot2$. By induction, the degree of $F = \Q(\alpha_1, \alpha_2, ..., \alpha_n)$ will be $2^i$ for some $1 \leq i \leq n$. Hence, the degree of $F$ is not a divisible by $3$.
+			
+			 By corollary 15, if $\Q(\sqrt[3]{2})$ is in $F$, then the degree of $\Q(\sqrt[3]{2})$ must divide $[F:Q]=2$. However, the degree of $\Q(\sqrt[3]{2})$ is $3$. Therefore, $\sqrt[3]{2}$ it is not contained in $F$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{1.15}
+		A field $F$ is said to be formally real if $-1$ is not expressible as a sum of squares in $F$. Let $F$ be a formally real field, let $f(x)\in F[x]$ be an irreducible polynomial of odd degree and let $\alpha$ be a root of $f(x)$. Prove that $F(\alpha)$ is also formally real. [Pick $\alpha$ a counterexample of minimal degree. Show that $-1 + f(x)g(x) = (p_1(x))^2 + ... + (p_m(x))^2$ for some $p_i(x), g(x) \in F[x]$ where $g(x)$ has odd degree $<\text{deg} f$. Show that some root $\beta$ of $g$ has	odd degree over $F$ and $F(\beta)$ is not formally real, violating the minimality of $\alpha$.]
+		\begin{proof}
+			Suppose $\alpha$ is a minimal degree counterexample for some field $F$. (It is possible to choose a minimal degree counterexample for any field $F$ because any root $\alpha$ has finite degree.) By definition, $p_1(\alpha)^2 + ... + p_n(\alpha)^2 = -1$ for each $p_i(\alpha)$ being in $F(\alpha)$. Let $q(x) = (p_1(x))^{2} + ... + (p_n(x))^{2}$. Since $q(x) \cong -1 \mod f(x)$, there is a $g(x)$ such that $-1 + f(x)g(x) = q(x)$. Since $\deg q(x) = \deg g(x) \cdot \deg f(x)$ is even, $\deg g(x)$ must be odd. Since each term in $q(\alpha)$ is the square of a term in $F(\alpha) \cong F[x]/(f(x))$, $q(x)$ has degree at most $2(\deg f - 1)$. Hence, $g(x)$ has degree at most $2(\deg f -1) - \deg f = \deg f - 2$. So $\deg g < \deg f$.
+			
+			Let $g'(x)$ be the minimal irreducible odd degree factor of $g(x)$ and denote its root by $\beta$. Let $p_i'(x)$ be the remainder after dividing $p_i(x)$ be $g(x)$. Then in $F(\beta)$, the term $p_n'(\beta)^2 + ... + p_1'(\beta)^2 = -1$, which is a contradiction. Therefore, $F(\alpha)$ is formally real for all odd degree roots $\alpha$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.17}
+		Let $f(x)$ be an irreducible polynomial of degree $n$ over a field $F$. Let $g(x)$ be any polynomial in $F[x]$. Prove that every irreducible factor of the composite polynomial $f(g(x))$ has degree divisible by $n$.
+		\begin{proof}
+			If $\alpha$ is a root of $f(x)$, then the roots of $g(x) - \alpha$ are roots of $f(g(x))$. If $\beta$ is a root of $g(x) - \alpha$, then it will have degree $n \leq \deg g$. Hence, $\beta$ will have degree $n\cdot \deg f$ in $f(g(x))$, which obviously divides $\deg f$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{2.19}
+		Let K be an extension of F of degree n.
+		\begin{itemize}
+			\item[\textbf{(a)}] For any $\alpha \in K$ prove that $\alpha$ acting by left multiplication on $K$ is an $F$-linear transformation of $K$.
+			\item[\textbf{(b)}] Prove that $K$ is isomorphic to a subfield of the ring of $n \times n$ matrices over $F$, so the ring of $n \times n$ matrices over $F$ contains an isomorphic copy of every extension of $F$
+			of degree $n$.
+		\end{itemize}
+		\begin{proof}{(a)}
+			Let $a, b$ be elements of $K$ and $c$ be an element of $F$; $\alpha \cdot (a + bc) = \alpha\cdot(a) + c \alpha \cdot (b)$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.1}
+		Determine the splitting field and its degree over $x^4 - 2$.
+		\begin{proof}
+			This polynomial can be factored as $(x^2-\sqrt{2})(x^2+\sqrt{2}) = (x - \sqrt[4]{2})(x+\sqrt[4]{2})(x-i\sqrt[4]{2})(x+i\sqrt[4]{2})$. Hence, its roots are $\pm \sqrt[4]{2}, \pm i\sqrt[4]{2}$. So the splitting field is isomorphic to $\Q(\sqrt[4]{2}, i\sqrt[4]{2})$.
+			Since the polynomial is irreducible in $\Q$ by Eisenstein, this extension is degree $4$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.3}
+		Determine the splitting field and its degree over $\Q$ for $x^4 + x^2 + 1$.
+		\begin{proof}
+			Using the quadratic formula on $x^2 + x + 1$ yields $\frac{-1 \pm i\sqrt{3}}{2}$ So the roots of the original polynomial are $\pm\sqrt{\frac{-1 \pm i\sqrt{3}}{2}}$. And the splitting field is hence $\Q(\sqrt{\frac{-1 + i\sqrt{3}}{2}}, \sqrt{\frac{-1 - i\sqrt{3}}{2}})$.
+			
+			Using Wolfram Alpha to find different forms of $\sqrt{\frac{-1 + i\sqrt{3}}{2}}, \sqrt{\frac{-1 - i\sqrt{3}}{2}}$, we see that the roots of the polynomial can also be written as $\pm \frac{1}{2} \pm \frac{i\sqrt{3}}{2}$. Hence, the cutting field is isomorphic to $\Q(i\sqrt{3})$, and the field is hence a two degree extension.
+			
+			\begin{rem}
+				Since I have already done a few problems involving reduction of complex numbers, I decided to use Wolfram Alpha to simplify terms. However, while using wolfram alpha, I discovered that the polynomial $x^4 + x^2 + 1$ can be factored in $\Q$ as $(x^2+x+1)(x^2-x+1)$. This is reminiscent of example 4 on page 534 of the book. Sometimes, the degree of a splitting field is lower than expected.
+			\end{rem}
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{4.5}
+		Let $K$ be a finite extension of $F$. Prove that $K$ is a splitting field over $F$ if and only if every irreducible polynomial in $F[x]$ that has a root in $K$ splits completely in $K[x]$. [Use
+		Theorems 8 and 27.]
+		\begin{proof}
+			Suppose $K$ is a splitting field of $F$, and that $f'(x) \in F[x]$ is an irreducible polynomial with a root $\alpha$ in $K$. And let $f(x)$ be a polynomial in $F[x]$ with root $\alpha$ which is split by $K$. Let $\beta$ be any root of $f'(x)$. By theorem 8, we can extend the identity isomorphism to conclude $F(\alpha) \cong F(\beta)$. 
+			From the division algorithm in $F(\alpha)$, we can conclude that there is a $g(x)$ in $F(\alpha)[x]$ such that $f(x) = (x-\alpha)^ng(x)$, where $n$ is the order of $\alpha$ in $f(x)$. (note that there is no remainder since $(x-\alpha)^n$ divides $f(x)$.) Since 
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.1}
+		Prove that the derivative $D_x$ of a polynomial satisfies $D_x(f(x) + g(x)) = D_x(f(x)) +	D_x(g(x))$ and $D_x(f(x)g(x)) = D_x(f(x))g(x) + D_x(g(x))f(x)$ for any two polynomials	$f(x)$ and $g(x)$.
+		\begin{proof}
+			Let $f(x) = f_mx^m + f_{m-1}x^{m-1} + ... + f_1x + f_0$ and $g(x) = g_nx^n + g_{n-1}x^{n-1} + ... + f_1x + f_0$. The derivative of $f(x) + g(x)$ is then $mf_mx^{m-1} + ... + f_1 + ng_nx^{n-1} + ... + g_1$, which is obviously $D_x(f(x)) + D_x(g(x))$. For $f(x)g(x)$, we can rewrite the product as $\Sigma_{i=0}^n\Sigma_{j=0}^m g_if_jx^{i+j}$. The derivative of this is
+			\begin{align*}
+				\Sigma_{i=0}^n\Sigma_{j=0}^m (i+j)g_if_jx^{i+j-1} = \Sigma_{i=0}^n\Sigma_{j=0}^m (ig_ix^{i-1})f_jx^{j} + g_ix^{i}(jf_jx^{j-1}) = 
+			\end{align*} 
+			Distributing the sumations leads us to
+			\begin{align*}
+				\Sigma_{i=0}^nig_ix^{i-1}\Sigma_{j=0}^mf_jx^{j} + \Sigma_{i=0}^ng_ix^{i}\Sigma_{j=0}^mjf_jx^{j-1}
+			\end{align*}
+			Which is of course the equivalent to $D_x(g(x))f(x) + g(x)D_x(f(x))$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.3}
+		Prove that $d$ divides $n$ if and only if $x^d - 1$ divides $x^n - 1$. [Note that if $n = qd + r$ then $x^n - 1 = (x^{qd+r} - x^r) + (x^r - 1 )$.]
+		\begin{proof}
+			Suppose $d$ divides $n$. Then, for any $\alpha$ a root of $x^d-1$, $\alpha^{n}-1 = (\alpha^{dq}-1 = 1^q-1 = 1-1=0$. So $x^n-1$ has all of $x^d-1$ roots. Furthermore, since both polynomials are separable, all of $x^d-1$ roots show up exactly once in its factorization. From this we can conclude that $x^d-1$ factors out of $x^n-1$.
+			Now, suppose $x^d-1$ divides $x^n-1$. Then any root $\alpha$ of $x^d-1$ is also a root of $x^n-1$. As noted in the hint, we can rewrite $x^n-1$ as $(x^{qd+r}-x^r) + (x^r-1)$. At $\alpha$, this must evaluate to $0$. So, we have $0 = (\alpha^{qd+r}-\alpha^r) + (\alpha^r-1) = (\alpha^{qd}\alpha^r-\alpha^r) + (\alpha^r-1) = (\alpha^r-\alpha^r) + (\alpha^r-1) = (\alpha^r-1)$. Hence $x^r-1$ must be zero for any root of $x^d-1$. Since there are $d>r$ distinct roots for $x^d-1$, this can only be true if $x^r-1$ is identically $0$. Therefore, $r=0$ and $d|n$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.5}
+		For any prime $p$ and any nonzero $a \in \mathbb{F}_p$ prove that $x^p - x + a$ is irreducible and separable over $\mathbb{F}_p$. [For the irreducibility: One approach - prove first that if $a$ is a root then $a + 1$	is also a root. Another approach - suppose it's reducible and compute derivatives.]
+		\begin{proof}
+			Suppose for the sake of contradiction that $\alpha \in \mathbb{F}_p$ is a root of the polynomial. Then $(\alpha+1)^p - (\alpha + 1) + a$ can be rewritten by the Frobenius endomorphism theorem to $\alpha^p + 1^p - \alpha + 1 + a = \alpha^p + \alpha + a$. Hence, $\alpha+1$ is also a root. By induction, this means that every element of the field is a root of the polynomial. Hence, $a$ is a root and $0 = a^p -a + a = a^p$. This is a contradiction since $a$ is nonzero and fields are integral domains. Therefore, the polynomial is irreducible in $\mathbb{F}_p$. It follows from proposition 37 that the polynomial is also separable.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.7}
+		Suppose $K$ is a field of characteristic $p$ which is not a perfect field: $K\not=K^p$. Prove there exist irreducible inseparable polynomials over $K$. Conclude that there exist inseparable finite extensions of $K$.
+		\begin{proof}
+			Let $a$ be an element of $K$ such that $\alpha = a^{\frac{1}{p}} \not \in K$. The field $K(\alpha)$ is still of characteristic $p$. So we have $(x-\alpha)^p = x^p - \alpha^p = x^p-a$. Hence, $x^p-a$ is inseparable, as well as being obviously irreducible in $K$. Therefore, $K(\alpha)$ is a finite inseparable extension of $K$.
+			To see that there are multiple irreducible inseparable polynomials in $K$ and multiple inseparable extensions of $K$, note that $a+a \not = a$ is also not perfect since $(a + a)^{\frac{1}{p}} = \alpha + \alpha \not \in K$.
+		\end{proof}
+	\end{problem}
+	
+	\begin{problem}{5.9}
+		Show that the binomial coefficient $\binom{pn}{pi}$ is the coefficient of $x^{pi}$ in the expansion of $(1+x)^{pn}$. Working over $\mathbb{F}_p$ show that this is the coefficient of $(x^p)^i$ in $(1 + x^p)^n$ and hence prove that $\binom{pn}{pi} = \binom{n}{i} (\mod p)$.
+		\begin{proof}
+			By the binomial theorem, the coefficient of $x^{pi}$ is $\binom{pn}{pi}$. In $\mathbb{F}$, we can rewrite $(1+x)^{pn}$ as $(1 + x^p)^n$. Hence, $\binom{pn}{pi}$ is also the coefficient of $(x^p)^i$ in the expansion. 
+		\end{proof}
+	\end{problem}
+\end{document}
